@@ -1,6 +1,5 @@
 import React from "react";
-import Link from "next/link";
-import { Hand, Activity, Trophy, HeartPulse, ShieldAlert, UserCheck, Check, ArrowRight, HelpCircle } from "lucide-react";
+import { Hand, Activity, Trophy, HeartPulse, ShieldAlert, UserCheck, Check, HelpCircle } from "lucide-react";
 import { ServiceItem } from "@/data/services";
 
 const ICON_MAP: Record<string, React.ElementType> = {
@@ -57,7 +56,7 @@ export function ServiceCard({ service, variant = "light" }: ServiceCardProps) {
         </p>
 
         {/* Key Benefits List */}
-        <ul className="space-y-2 mb-6">
+        <ul className="space-y-2">
           {service.benefits.map((benefit, idx) => (
             <li key={idx} className="flex items-start gap-2 text-xs">
               <span className={`w-4 h-4 rounded-full flex items-center justify-center shrink-0 mt-0.5 ${isDark ? "bg-[#25D366]/20 text-[#25D366]" : "bg-[#16241F]/10 text-[#16241F]"}`}>
@@ -67,19 +66,6 @@ export function ServiceCard({ service, variant = "light" }: ServiceCardProps) {
             </li>
           ))}
         </ul>
-      </div>
-
-      {/* Footer Link */}
-      <div className="pt-4 border-t border-[#E3DCC9]/40 flex items-center justify-between">
-        <Link
-          href="/contact#enquiry-form"
-          className={`inline-flex items-center gap-1.5 font-semibold text-xs transition-colors ${
-            isDark ? "text-white hover:text-[#25D366]" : "text-[#16241F] hover:text-[#2F5245]"
-          }`}
-        >
-          <span>Enquire about this therapy</span>
-          <ArrowRight className="w-3.5 h-3.5" aria-hidden="true" />
-        </Link>
       </div>
     </div>
   );

@@ -1,24 +1,68 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Phone, MessageCircle, Menu, X, Home } from "lucide-react";
+import { Phone, MessageCircle, Menu, X } from "lucide-react";
 import { SITE_CONFIG } from "@/data/site";
 import { track } from "@/lib/track";
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState<string>("home");
   const pathname = usePathname();
 
   const navLinks = [
-    { href: "/", label: "Home" },
-    { href: "/about", label: "About" },
-    { href: "/services", label: "Services" },
-    { href: "/home-physiotherapy", label: "Home Visit Model" },
-    { href: "/faq", label: "FAQ" },
-    { href: "/contact", label: "Contact" },
+    { id: "home", label: "Home", href: "/#home" },
+    { id: "about", label: "About", href: "/#about" },
+    { id: "services", label: "Services", href: "/#services" },
+    { id: "home-physiotherapy", label: "Home Visit Model", href: "/#home-physiotherapy" },
+    { id: "faq", label: "FAQ", href: "/#faq" },
+    { id: "contact", label: "Contact", href: "/#contact" },
   ];
+
+  useEffect(() => {
+    // Active section detection via IntersectionObserver
+    const sectionIds = ["home", "about", "services", "home-physiotherapy", "faq", "contact"];
+    const sectionElements = sectionIds
+      .map((id) => document.getElementById(id))
+      .filter((el): el is HTMLElement => el !== null);
+
+    if (sectionElements.length === 0) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id);
+          }
+        });
+      },
+      {
+        rootMargin: "-20% 0px -45% 0px",
+        threshold: 0.1,
+      }
+    );
+
+    sectionElements.forEach((el) => observer.observe(el));
+
+    return () => {
+      observer.disconnect();
+    };
+  }, [pathname]);
+
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
+    if (pathname === "/") {
+      const el = document.getElementById(id);
+      if (el) {
+        e.preventDefault();
+        setActiveSection(id);
+        setMobileMenuOpen(false);
+        el.scrollIntoView({ behavior: "smooth" });
+        window.history.pushState(null, "", `/#${id}`);
+      }
+    }
+  };
 
   const handlePhoneClick = () => {
     track("phone_click", { location: "header" });
@@ -34,7 +78,8 @@ export function Header() {
         <div className="flex items-center justify-between h-20">
           {/* Logo / Brand Name */}
           <Link
-            href="/"
+            href="/#home"
+            onClick={(e) => handleNavClick(e, "home")}
             className="group flex items-center gap-3 focus-visible:ring-2 focus-visible:ring-[#F6F2E9] rounded-lg p-1"
           >
             <div className="w-10 h-10 rounded-full bg-[#EFE9DA] text-[#16241F] flex items-center justify-center font-bold text-lg shadow-sm group-hover:scale-105 transition-transform">
@@ -50,21 +95,25 @@ export function Header() {
             </div>
           </Link>
 
-          {/* Desktop Navigation Links */}
+          {/* Desktop Navigation Links with Active Scroll Indicator */}
           <nav aria-label="Main Navigation" className="hidden lg:flex items-center space-x-1 xl:space-x-2">
             {navLinks.map((link) => {
-              const isActive = pathname === link.href;
+              const isActive = activeSection === link.id;
               return (
                 <Link
-                  key={link.href}
+                  key={link.id}
                   href={link.href}
-                  className={`px-3 py-2 rounded-xl text-sm font-medium transition-colors ${
+                  onClick={(e) => handleNavClick(e, link.id)}
+                  className={`px-3.5 py-2 rounded-xl text-sm font-medium transition-all relative ${
                     isActive
-                      ? "bg-[#1E332C] text-[#FFFFFF] font-semibold border border-[#2F5245]"
+                      ? "bg-[#1E332C] text-[#FFFFFF] font-semibold border border-[#2F5245] shadow-inner"
                       : "text-[#EFE9DA] hover:bg-[#1E332C]/60 hover:text-[#FFFFFF]"
                   }`}
                 >
-                  {link.label}
+                  <span>{link.label}</span>
+                  {isActive && (
+                    <span className="absolute bottom-1 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-[#25D366]" />
+                  )}
                 </Link>
               );
             })}
@@ -121,12 +170,12 @@ export function Header() {
         <div className="lg:hidden bg-[#16241F] border-b border-[#2F5245] px-4 pt-3 pb-6 space-y-2 animate-in slide-in-from-top duration-200">
           <nav aria-label="Mobile Navigation" className="flex flex-col space-y-1">
             {navLinks.map((link) => {
-              const isActive = pathname === link.href;
+              const isActive = activeSection === link.id;
               return (
                 <Link
-                  key={link.href}
+                  key={link.id}
                   href={link.href}
-                  onClick={() => setMobileMenuOpen(false)}
+                  onClick={(e) => handleNavClick(e, link.id)}
                   className={`px-4 py-3 rounded-xl text-base font-medium flex items-center justify-between ${
                     isActive
                       ? "bg-[#1E332C] text-white font-semibold border border-[#2F5245]"
@@ -134,7 +183,7 @@ export function Header() {
                   }`}
                 >
                   <span>{link.label}</span>
-                  {isActive && <span className="w-2 h-2 rounded-full bg-[#25D366]" />}
+                  {isActive && <span className="w-2.5 h-2.5 rounded-full bg-[#25D366]" />}
                 </Link>
               );
             })}
