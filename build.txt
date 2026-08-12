@@ -1,0 +1,461 @@
+====================================================================
+BUILD SPECIFICATION — Chinmay Physiotherapy Website
+For: Autonomous coding agent (Antigravity)
+Version: 1.0
+====================================================================
+
+GOAL
+Build a fast, mobile-first, error-free marketing + enquiry website for
+Chinmay, an independent physiotherapist who travels to patients' homes.
+No physical clinic exists. No backend/database/auth/admin dashboard.
+This is v1 — a static-first site with a simple enquiry form.
+
+Do not fabricate any business fact not explicitly given below. Every
+unconfirmed value MUST be rendered from a placeholder constant so it
+can be edited in one place later (see /data files below). Never hardcode
+a fake clinic address, fake years of experience, fake reviews, or fake
+statistics anywhere in code, metadata, or structured data.
+
+--------------------------------------------------------------------
+1. CONFIRMED FACTS (safe to hardcode)
+--------------------------------------------------------------------
+Name: Chinmay
+Phone: +91 91132 85572
+Role: Physiotherapist (home-visit / mobile physiotherapy)
+Physical clinic: NONE — never state or imply one exists
+Service radius: 5 km (radius confirmed, exact center areas NOT confirmed)
+City: Bengaluru (broad city confirmed; specific localities NOT confirmed)
+Qualification: Bachelor of Physiotherapy (BPT) — degree name only,
+  do not add "Dr." prefix, university name, or graduation year
+Registration/license number: NOT PROVIDED — do not display any number
+Years of experience: NOT PROVIDED — do not display any number
+Specific services offered: NOT CONFIRMED
+Conditions treated: NOT CONFIRMED
+Pricing: NOT PROVIDED
+Availability/hours: NOT PROVIDED
+Testimonials/reviews: NONE EXIST — do not create any
+
+--------------------------------------------------------------------
+2. REFERENCE MATERIAL PROVIDED BY CLIENT (moodboard, not confirmed data)
+--------------------------------------------------------------------
+The client shared four marketing/moodboard collage images showing
+generic stock-photo physiotherapy marketing panels (hero taglines,
+"our services" icon grids, and a "conditions treated" grid). These are
+STYLE AND CATEGORY REFERENCE ONLY — they are stock photography, not
+photos of Chinmay, and the listed services/conditions are NOT confirmed
+services Chinmay offers.
+
+Use them only as:
+  a) Visual/tone reference (see Section 4, Design System)
+  b) A CANDIDATE list for the placeholder services/conditions data
+     files, so the layout and content structure are ready to receive
+     real data later. Every placeholder item must carry a visible
+     "[PLACEHOLDER — confirm with Chinmay]" flag in the source data
+     (not necessarily visible in UI copy, but flagged in code comments
+     and in the CMS-style data file) so it's obvious this is example
+     content, not verified fact.
+
+Do NOT use any of the stock photographs themselves as final site
+imagery (they are not licensed to this project and are not Chinmay).
+Use neutral placeholder image slots instead (Section 9).
+
+--------------------------------------------------------------------
+3. TECH STACK
+--------------------------------------------------------------------
+- Framework: Next.js 14+ (App Router), TypeScript
+- Styling: Tailwind CSS (utility-first, no heavy CSS framework)
+- Fonts: next/font with a variable sans-serif (e.g. Inter or Plus
+  Jakarta Sans) — self-hosted via next/font, no external font CDN
+  requests, no render-blocking font loads
+- Icons: lucide-react (lightweight, tree-shakeable)
+- Forms: native React state + server action (or simple API route),
+  NO third-party form SaaS embedded as an iframe (keeps page light and
+  avoids third-party tracking scripts by default). Provide the form
+  handler with a clearly marked TODO for the real submission target
+  (email service / serverless function) since no backend is being
+  built in v1 — see Section 8.
+- No database. No authentication. No admin dashboard. No CMS.
+- Deployment target: Vercel (or any static/Node hosting) — must build
+  cleanly with `next build` and produce zero console errors/warnings.
+- Package manager: npm. Keep dependencies minimal — do not add UI
+  kits, animation libraries, or analytics SDKs by default.
+
+--------------------------------------------------------------------
+4. DESIGN SYSTEM (theme reference: client-supplied mobile UI moodboard —
+   deep forest green + warm cream, rounded cards, circular icon
+   buttons, bold stat callouts — a "TOTUM"-style premium services app
+   aesthetic, adapted for healthcare)
+--------------------------------------------------------------------
+Palette:
+
+  --color-forest-900: #16241F   (deep dark green — dark card panels,
+                                  header/footer bg, primary buttons)
+  --color-forest-800: #1E332C   (secondary dark surface, hover states)
+  --color-forest-600: #2F5245   (mid-tone green, used sparingly for
+                                  borders/dividers on dark panels)
+  --color-cream-50:   #F6F2E9   (primary page background — warm,
+                                  not pure white)
+  --color-cream-100:  #EFE9DA   (alternating section background)
+  --color-ink-900:    #12140F   (near-black, high-contrast headings
+                                  on cream/white surfaces)
+  --color-slate-600:  #4A5049   (body text on light backgrounds)
+  --color-white:      #FFFFFF   (card surfaces on dark panels, header
+                                  bar on light sections)
+  --color-border:     #E3DCC9   (hairline borders on cream surfaces)
+  --color-gold-accent:#C9A227   (rare accent — a small badge/icon
+                                  highlight only, e.g. an award or
+                                  "trusted" icon; never a background
+                                  or large fill)
+  --color-success:    #2E9E6B   (form success state)
+  --color-error:      #B3412E   (form error state — warm red-brown,
+                                  not a jarring pure red, to match tone)
+  --color-whatsapp:   #25D366   (WhatsApp CTA only — the one brand
+                                  color allowed outside this palette)
+
+Rules:
+- Two-surface system, matching the reference: DARK PANELS (forest-900
+  background, white/cream text, white circular icon buttons) alternate
+  with LIGHT PANELS (cream-50 background, ink-900 text, forest-900
+  buttons). Do not mix — each section/card is clearly one or the other.
+- Cards are prominently rounded: 24–28px radius on large panel cards
+  (hero card, trust card, stat cards), 12–16px on smaller components
+  (form fields, service cards). This is a defining trait of the
+  reference — do not flatten it to sharp corners.
+- Circular icon buttons (44–56px) are a signature element: white
+  circle + forest-900 icon on dark panels, forest-900 circle + white
+  icon on light panels. Use these for the call icon, menu icon, and
+  small feature-badge icons — not generic square icon buttons.
+- Bold stat-style callouts: large (36–48px) bold numerals paired with
+  a small label underneath, exactly like the reference's "108 / Team
+  members" pattern. IMPORTANT: only use this pattern for numbers we
+  can actually confirm — currently that's just the 5 km service
+  radius ("5 / km service radius"). Do NOT invent "years of practice,"
+  "successful cases," or "patients treated" numbers to fill this
+  pattern. Where the reference uses a second/third stat, substitute a
+  non-numeric feature badge instead (e.g. an icon + "Home Visits" or
+  icon + "BPT Qualified") rather than fabricate a statistic.
+- Typography: bold, tight-tracking sans-serif headlines (600–700
+  weight, large scale — 32–44px on mobile hero text), calm regular-
+  weight body copy (1.6+ line-height, minimum 16px).
+- A short pull-quote/intro-line component (like the reference's "We
+  understand the business..." card) may be reused for a brief,
+  factual professional-introduction line from Chinmay — never a
+  fabricated patient testimonial.
+- Subtle thin-line geometric background accents (as in the reference)
+  are allowed behind hero/dark sections at very low opacity — never
+  busy, never competing with text contrast.
+- Shadows: soft, warm-toned, used only under cards sitting on cream
+  backgrounds; dark panels rely on the color block itself, not shadow.
+- Iconography: simple line icons (lucide-react) inside the circular
+  buttons/badges described above — not filled medical clip-art, not
+  photographic icons.
+- Imagery: real photography only when supplied by Chinmay, treated
+  the way the reference treats its portrait (clean cutout/crop against
+  a plain card background, not a busy stock scene). Until real photos
+  exist, use clean placeholder blocks (cream-100 or forest-800
+  background + a lucide icon + label like "Portrait photo — to be
+  added"), never stock photos of unrelated people presented as
+  Chinmay or as real patients.
+
+--------------------------------------------------------------------
+5. SITEMAP / ROUTES
+--------------------------------------------------------------------
+/                     Homepage
+/about                About Chinmay
+/services             Services overview (card grid, placeholder data)
+/home-physiotherapy   Explains the home-visit model in depth
+/contact              Contact + enquiry form
+/faq                  FAQ (can also be a homepage section AND its own
+                      page for SEO; homepage section links to /faq)
+/sitemap.xml          Generated
+/robots.txt           Generated
+not-found (404)       Custom 404 page with CTA back home + contact
+
+Keep this flat. Do NOT generate per-service or per-locality pages yet.
+Structure the /services page and its data source so that later each
+service card can become its own route (/services/[slug]) without
+restructuring — i.e. drive the grid from a typed array in
+/data/services.ts keyed by slug, not from hardcoded JSX.
+
+--------------------------------------------------------------------
+6. GLOBAL LAYOUT COMPONENTS
+--------------------------------------------------------------------
+Header
+- Logo/name "Chinmay — Physiotherapist" (text-based, no fake logo mark
+  unless client supplies one later; leave a slot)
+- Desktop nav: Home, About, Services, Home Physiotherapy, FAQ, Contact
+- Persistent "Call" and "WhatsApp" icon buttons in header on desktop
+- Mobile: hamburger menu; header stays slim to preserve vertical space
+
+MobileActionBar (fixed bottom bar, mobile viewport only, <lg breakpoint)
+- Three segments: Call | WhatsApp | Enquire
+- `tel:+919113285572` / WhatsApp deep link / anchor or route to
+  /contact#enquiry-form
+- Always visible, safe-area-inset-bottom padding for iOS, does not
+  cover form inputs (add scroll padding-bottom on pages with forms)
+- Not shown as an overlay on top of open mobile nav menu or open forms
+  in a way that blocks submission buttons
+
+Footer
+- Chinmay — Physiotherapist / Home Visit Physiotherapy
+- Phone (tel: link), WhatsApp link
+- Service area: "{SERVICE_AREA_TEXT}" placeholder (Section 7)
+- Quick links (sitemap)
+- Line: "This site does not represent a physical clinic. Chinmay
+  provides physiotherapy services at patients' homes within the
+  service area." (Plain factual disclosure, not a legal disclaimer
+  gimmick — keeps Google/GBP representation honest)
+- Copyright line, current year computed via JS, not hardcoded
+
+--------------------------------------------------------------------
+7. PLACEHOLDER / DATA CONSTANTS
+--------------------------------------------------------------------
+Create /data/site.ts exporting a single typed config object. ALL of
+these are placeholders unless marked CONFIRMED — comment each field:
+
+  name: "Chinmay"                                         // CONFIRMED
+  role: "Physiotherapist"                                 // CONFIRMED
+  phone: "+919113285572"                                  // CONFIRMED
+  phoneDisplay: "+91 91132 85572"                         // CONFIRMED
+  whatsappNumber: "919113285572"                          // CONFIRMED
+  qualification: "Bachelor of Physiotherapy (BPT)"        // CONFIRMED
+  registration: "[CHINMAY_REGISTRATION — to be confirmed]"// PLACEHOLDER
+  yearsOfExperience: "[YEARS_OF_EXPERIENCE — to be confirmed]" // PLACEHOLDER
+  city: "Bengaluru"                                       // CONFIRMED (broad)
+  serviceArea: "[SERVICE_AREA — specific localities to be confirmed]" // PLACEHOLDER
+  serviceRadiusKm: 5                                      // CONFIRMED
+  pricing: "[PRICING — to be confirmed]"                  // PLACEHOLDER
+  availability: "[AVAILABILITY — to be confirmed]"        // PLACEHOLDER
+
+Create /data/services.ts — array of {slug, title, description, icon}.
+Populate with the CANDIDATE categories drawn from the client's
+reference imagery (manual therapy, exercise therapy, sports
+rehabilitation, post-surgery rehabilitation, neck & back pain
+treatment, geriatric physiotherapy). Prefix the file with a top
+comment:
+  // PLACEHOLDER DATA — these are example service categories only.
+  // Confirm actual services offered with Chinmay before publishing.
+Render a small "Example — to be confirmed" microcopy badge on each
+service card in the UI so real visitors are never misled before this
+is confirmed and the badge removed.
+
+Create /data/conditions.ts similarly for a "Conditions this type of
+therapy commonly addresses" reference list (from the reference image's
+condition grid), same placeholder comment + UI badge treatment. Do NOT
+title this section "Conditions Chinmay treats" until confirmed — title
+it neutrally, e.g. "Conditions physiotherapy commonly helps with
+(examples)", and add a line: "Chinmay will confirm which conditions he
+currently treats — please ask when you enquire."
+
+Create /data/faq.ts — array of {question, answer}. Only include
+answers we can factually support today (yes we do home visits, yes
+service radius is 5km, contact via call/WhatsApp/form). Leave
+pricing/availability FAQ entries with placeholder answers or omit
+those questions until data exists.
+
+--------------------------------------------------------------------
+8. CTA / CONTACT BEHAVIOR
+--------------------------------------------------------------------
+Call button: <a href="tel:+919113285572">
+WhatsApp button: <a href="https://wa.me/919113285572" target="_blank"
+  rel="noopener noreferrer">. Do not prefill a message unless the
+  client later approves specific wording — if a prefilled message is
+  wanted now, use a neutral line only:
+  https://wa.me/919113285572?text=Hi%20Chinmay%2C%20I%27d%20like%20to%20enquire%20about%20home%20physiotherapy
+  (URL-encoded, editable in one constant).
+
+Enquiry form (route: /contact, section id="enquiry-form"):
+Fields: Name (required), Phone number (required, basic pattern
+validation for Indian numbers), Preferred contact method (Call /
+WhatsApp — radio), Message / general enquiry (required, textarea),
+Preferred date/time (optional, plain text or simple date input — not
+a full booking calendar). NO medical history, medication, or diagnosis
+fields.
+
+Client-side validation: required fields, phone pattern, max length
+guards, disable submit while pending, show inline error text (not
+just color) for accessibility.
+
+Submission target: since there is no backend/database in v1, wire the
+form to one of these (pick ONE, document the choice in a code comment
+at the top of the form component, and leave the endpoint as an env
+var so it's swappable):
+  a) A serverless API route (/app/api/enquiry/route.ts) that emails
+     the enquiry using a transactional email provider (e.g. Resend)
+     via an API key read from process.env — NEVER hardcode the key in
+     client code, only use it server-side.
+  b) A privacy-respecting form backend (e.g. Formspree/Web3Forms) via
+     its documented POST endpoint.
+Either way: do not store submissions in a database, do not log full
+form contents to third-party analytics, and rate-limit/basic
+honeypot-field spam protection (a hidden field bots fill in but humans
+don't) must be included since there's no CAPTCHA dependency.
+
+On success: show an inline confirmation message ("Thanks — Chinmay
+will get back to you shortly") plus repeat the Call/WhatsApp buttons
+as a fallback. On failure: show a clear error and the phone number as
+a fallback contact method — never let a form failure be a dead end.
+
+--------------------------------------------------------------------
+9. IMAGE HANDLING
+--------------------------------------------------------------------
+- Use next/image for every raster image, with explicit width/height
+  or fill + sized container to avoid layout shift.
+- Ship the site with placeholder image components, not files, for:
+  Chinmay's portrait, a "home session" representative photo, and any
+  service-related images. Placeholder = a bordered div with a muted
+  icon + label, NOT a stock photo pretending to be real. Add a
+  `/public/images/README.md` explaining exactly which files to drop in
+  (file name, recommended dimensions, aspect ratio) when Chinmay
+  supplies real photos.
+- All future real images: require alt text as a mandatory prop on the
+  placeholder→real image swap (fail a lint rule / TS type if alt is
+  missing).
+- No image should exceed reasonable web dimensions; document a max of
+  ~1600px width for hero imagery, ~800px for card imagery, WebP/AVIF
+  via next/image automatic optimization.
+
+--------------------------------------------------------------------
+10. SEO IMPLEMENTATION
+--------------------------------------------------------------------
+- Use the App Router `metadata` export per page: unique <title> and
+  meta description per route (see table below).
+- Canonical URL per page via metadata.alternates.canonical.
+- Open Graph + Twitter card metadata (title, description, a
+  placeholder OG image slot at /public/og-image.png — 1200x630,
+  create a simple text-based placeholder, not a fabricated photo).
+- Semantic HTML: exactly one <h1> per page, logical h2/h3 nesting, use
+  <nav>, <main>, <footer>, <address> where appropriate (address block
+  should NOT contain a fake street address — omit street address
+  entirely, only phone + service area text).
+- Structured data (JSON-LD): use schema.org type "LocalBusiness" or
+  more specifically "MedicalBusiness"/"PhysicalTherapy" configured as
+  a **service-area business**: set `areaServed` to the confirmed
+  city/radius, and explicitly omit/leave blank any street address
+  field (do NOT set `address` to a fake or residential address; if the
+  schema requires an address object, omit the whole address property
+  rather than fabricate one). Include name, telephone, url, and
+  priceRange only if/when pricing is confirmed (omit priceRange until
+  then).
+- robots.txt: allow all, reference sitemap.xml.
+- sitemap.xml: generate via Next.js `app/sitemap.ts`, include all
+  routes in Section 5.
+- Descriptive URLs already satisfied by the flat sitemap.
+- Do NOT insert location keywords ("physiotherapist Koramangala" etc.)
+  anywhere until SERVICE_AREA is confirmed — use neutral phrasing like
+  "home physiotherapy in Bengaluru" only, nothing more granular.
+
+Per-page title/description starting point (edit once real data lands):
+  /               "Chinmay — Home Visit Physiotherapist in Bengaluru"
+  /about          "About Chinmay — Physiotherapist (BPT)"
+  /services       "Physiotherapy Services — Chinmay"
+  /home-physiotherapy  "Home Physiotherapy — How It Works"
+  /contact        "Contact Chinmay — Book a Home Physiotherapy Visit"
+  /faq            "FAQs — Home Physiotherapy with Chinmay"
+
+--------------------------------------------------------------------
+11. ACCESSIBILITY REQUIREMENTS
+--------------------------------------------------------------------
+- Color contrast: all text meets WCAG AA against its background using
+  the palette in Section 4 (verify navy-700 on white, white on
+  navy-900/teal-600, etc. — do not use teal-100 text on white).
+- Visible focus states on every interactive element (custom focus
+  ring using teal-600, not just browser default suppressed).
+- All buttons/links have accessible names (no icon-only buttons
+  without aria-label, e.g. WhatsApp icon button needs
+  aria-label="Message Chinmay on WhatsApp").
+- Form inputs have associated <label> elements (not placeholder-only
+  labeling), and errors are announced via aria-live or aria-describedby.
+- Mobile bottom action bar must not overlap or trap focus; verify tab
+  order remains logical with it present.
+- Minimum tap target 44x44px on mobile.
+- No content conveyed by color alone (e.g. required-field asterisk +
+  text, not just red color).
+
+--------------------------------------------------------------------
+12. PERFORMANCE REQUIREMENTS
+--------------------------------------------------------------------
+- Zero unnecessary client components — default to Server Components;
+  mark "use client" only where interactivity is required (nav menu
+  toggle, mobile action bar, form).
+- No animation libraries; use CSS transitions only, and respect
+  prefers-reduced-motion.
+- No third-party scripts by default (no chat widgets, no font CDNs,
+  no ad pixels). Analytics is optional and must be added later behind
+  a single toggle (Section 13), not embedded by default.
+- Target Lighthouse (mobile): Performance ≥95, Accessibility ≥95,
+  Best Practices ≥95, SEO 100.
+- Fonts self-hosted via next/font, font-display: swap.
+- Images lazy-loaded below the fold via next/image defaults.
+
+--------------------------------------------------------------------
+13. ANALYTICS HOOK (not implemented in v1, just wired for later)
+--------------------------------------------------------------------
+Create a single no-op helper `lib/track.ts` exporting `track(event:
+string, data?: Record<string, unknown>)` that currently just does
+nothing (or console.debug in development). Call this function at the
+following interaction points so the wiring exists, without adding any
+analytics SDK dependency yet:
+  phone_click        — on tel: link click
+  whatsapp_click      — on WhatsApp link click
+  enquiry_started     — on first focus/interaction with the form
+  enquiry_submitted   — on successful form submit
+  home_visit_request  — if a distinct "Request a Home Visit" CTA
+                          exists separate from the general enquiry
+
+--------------------------------------------------------------------
+14. VALIDATION / TESTING REQUIREMENTS
+--------------------------------------------------------------------
+Before considering the build done, the agent MUST:
+1. Run `next build` successfully with zero errors and zero warnings.
+2. Run `next lint` (or eslint) with zero errors.
+3. Manually verify (or via a script) that every route in Section 5
+   renders without runtime errors, including the 404 page.
+4. Verify the enquiry form: submits successfully with valid data,
+   shows validation errors with invalid/missing data, and the
+   honeypot field is present and hidden from real users.
+5. Verify tel: and wa.me links use the exact confirmed phone number
+   from Section 7 (single source of truth — no other file should
+   hardcode a phone number).
+6. Verify responsive behavior at 320, 375, 390, 414, 768, 1024, 1440px
+   widths — no horizontal scroll at any width, mobile action bar does
+   not overlap footer/form content.
+7. Verify no fabricated content anywhere: search the codebase for the
+   words "testimonial", "review", "guaranteed", "certified since",
+   "years of experience" followed by a number, or any hardcoded street
+   address — none of these should appear with real-sounding fabricated
+   values.
+8. Verify JSON-LD structured data is valid (no address fabrication,
+   no priceRange unless pricing is confirmed).
+9. Verify sitemap.xml and robots.txt are reachable and correctly
+   formed.
+
+--------------------------------------------------------------------
+15. DEPLOYMENT READINESS
+--------------------------------------------------------------------
+- Include a README.md with: setup steps, env vars required (email/
+  form provider API key), how to update /data/site.ts when real
+  business info is confirmed, and how to swap placeholder images for
+  real photos.
+- .env.example listing required env var names (no real secrets
+  committed).
+- Ready to deploy on Vercel with zero additional configuration beyond
+  the env var(s) for the form backend.
+
+--------------------------------------------------------------------
+16. EXPLICITLY OUT OF SCOPE FOR v1 (do not build)
+--------------------------------------------------------------------
+- Database of any kind
+- User authentication / login
+- Admin dashboard or CMS
+- Appointment/calendar booking system
+- Blog/CMS-driven content engine
+- Multi-location or locality landing pages
+- Payment processing
+- Native analytics SDK integration (Section 13 is a stub only)
+- Any fabricated testimonial, review, statistic, certification, or
+  clinic address
+
+====================================================================
+END OF build.txt
+====================================================================

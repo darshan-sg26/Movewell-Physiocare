@@ -1,0 +1,55 @@
+@import "tailwindcss";
+
+@theme {
+  --color-forest-900: #16241F;
+  --color-forest-800: #1E332C;
+  --color-forest-600: #2F5245;
+  --color-cream-50: #F6F2E9;
+  --color-cream-100: #EFE9DA;
+  --color-ink-900: #12140F;
+  --color-slate-600: #4A5049;
+  --color-white: #FFFFFF;
+  --color-border-cream: #E3DCC9;
+  --color-gold-accent: #C9A227;
+  --color-success: #2E9E6B;
+  --color-error: #B3412E;
+  --color-whatsapp: #25D366;
+
+  --font-sans: var(--font-jakarta), system-ui, -apple-system, sans-serif;
+}
+
+:root {
+  --bg-cream: #F6F2E9;
+  --text-ink: #12140F;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg-cream);
+  color: var(--text-ink);
+  font-family: var(--font-sans);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Ensure mobile action bar space on small screens */
+.pb-mobile-action-bar {
+  padding-bottom: 5rem;
+}
+
+@media (min-width: 1024px) {
+  .pb-mobile-action-bar {
+    padding-bottom: 0;
+  }
+}
+
+/* Custom focus ring for WCAG AA compliance */
+*:focus-visible {
+  outline: 2px solid #2F5245;
+  outline-offset: 2px;
+}
