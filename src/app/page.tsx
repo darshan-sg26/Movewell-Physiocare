@@ -9,7 +9,7 @@ import { ServiceCard } from "@/components/ServiceCard";
 import { ConditionCard } from "@/components/ConditionCard";
 import { FAQAccordion } from "@/components/FAQAccordion";
 import { EnquiryForm } from "@/components/EnquiryForm";
-import { PlaceholderImage } from "@/components/PlaceholderImage";
+import { SmartPhoto } from "@/components/SmartPhoto";
 
 export default function HomePage() {
   const steps = [
@@ -22,7 +22,7 @@ export default function HomePage() {
     {
       num: "02",
       title: "In-Home Assessment",
-      description: "Chinmay arrives at your residence to perform a detailed physical movement and pain evaluation.",
+      description: "Our physiotherapist arrives at your residence to perform a detailed physical movement and pain evaluation.",
       icon: ClipboardCheck,
     },
     {
@@ -42,7 +42,7 @@ export default function HomePage() {
   return (
     <div className="space-y-20 lg:space-y-28 py-6 sm:py-10">
       {/* ================================================================ */}
-      {/* 1. HERO SECTION (#home) — DARK PANEL SURFACE                     */}
+      {/* 1. HERO SECTION (#home) — MOVEWELL PHYSIOCARE                    */}
       {/* ================================================================ */}
       <section id="home" className="scroll-mt-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="bg-[#16241F] text-[#F6F2E9] rounded-[28px] p-6 sm:p-10 lg:p-14 border border-[#2F5245] shadow-2xl relative overflow-hidden">
@@ -52,16 +52,16 @@ export default function HomePage() {
             {/* Left Content Column */}
             <div className="lg:col-span-7 space-y-6">
               <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#1E332C] text-[#25D366] font-semibold text-xs uppercase tracking-wider border border-[#2F5245]">
-                <Home className="w-3.5 h-3.5 shrink-0" aria-hidden="true" />
-                <span>Home Visit Physiotherapist • Bengaluru</span>
+                <Activity className="w-3.5 h-3.5 shrink-0" aria-hidden="true" />
+                <span>Movewell Physiocare • Home Visit Service • Bengaluru</span>
               </div>
 
               <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight leading-[1.15]">
-                Personalized Home Visit Physiotherapy Care
+                {SITE_CONFIG.brandName} — Professional Home Visit Physiotherapy
               </h1>
 
               <p className="text-base sm:text-lg text-[#EFE9DA]/90 leading-relaxed max-w-2xl">
-                Skip clinic travel and waiting rooms. {SITE_CONFIG.name} ({SITE_CONFIG.qualification}) delivers dedicated home-visit physiotherapy assessments and therapeutic sessions across Bengaluru within a {SITE_CONFIG.serviceRadiusKm} km service radius.
+                Skip clinic travel and waiting rooms. {SITE_CONFIG.brandName} delivers dedicated home-visit physiotherapy assessments and therapeutic sessions led by {SITE_CONFIG.practitionerName} ({SITE_CONFIG.qualification}) across Bengaluru within a {SITE_CONFIG.serviceRadiusKm} km service radius.
               </p>
 
               {/* Primary Call-to-Action Buttons */}
@@ -116,20 +116,21 @@ export default function HomePage() {
                   <div className="w-8 h-8 rounded-full bg-[#16241F] text-[#C9A227] flex items-center justify-center">
                     <Award className="w-4 h-4" aria-hidden="true" />
                   </div>
-                  <p className="text-xs text-white font-bold mt-2">{SITE_CONFIG.qualification}</p>
-                  <p className="text-[11px] text-[#EFE9DA]/70">Qualified Practitioner</p>
+                  <p className="text-xs text-white font-bold mt-2">{SITE_CONFIG.practitionerName} ({SITE_CONFIG.qualification})</p>
+                  <p className="text-[11px] text-[#EFE9DA]/70">Lead Practitioner</p>
                 </div>
               </div>
             </div>
 
-            {/* Right Placeholder Image Column */}
+            {/* Right Photo Column: SmartPhoto with hero-session.png */}
             <div className="lg:col-span-5">
-              <PlaceholderImage
-                label="Chinmay — Home Visit Session"
-                sublabel="Representative photo slot — to be updated when official imagery is provided."
+              <SmartPhoto
+                src="/images/hero-session.png"
+                label={`${SITE_CONFIG.brandName} — Home Session`}
+                sublabel="Home visit physiotherapy session"
                 aspectRatio="portrait"
                 variant="dark"
-                alt="Placeholder image slot for Chinmay performing a home-visit physiotherapy session in Bengaluru"
+                alt="Movewell Physiocare home-visit physiotherapy session in Bengaluru"
               />
             </div>
           </div>
@@ -147,13 +148,13 @@ export default function HomePage() {
           </div>
           <div className="space-y-2 text-center md:text-left">
             <h2 className="text-xs font-bold text-[#12140F] uppercase tracking-wider">
-              Professional Philosophy
+              Clinical Philosophy
             </h2>
             <blockquote className="text-base sm:text-lg text-[#12140F] font-medium leading-relaxed italic">
-              &ldquo;Effective physiotherapy starts with understanding your daily environment. By providing care directly in your home, we focus on safe, functional movement restoration that fits naturally into your everyday routine.&rdquo;
+              &ldquo;At {SITE_CONFIG.brandName}, effective physiotherapy starts with understanding your daily living environment. By providing care directly in your home, we focus on safe, functional movement restoration that fits naturally into your everyday routine.&rdquo;
             </blockquote>
             <p className="text-xs text-[#4A5049] font-semibold">
-              — {SITE_CONFIG.name}, {SITE_CONFIG.qualification}
+              — {SITE_CONFIG.practitionerName}, {SITE_CONFIG.qualification} (Lead Practitioner)
             </p>
           </div>
         </div>
@@ -161,37 +162,38 @@ export default function HomePage() {
         {/* Profile Card */}
         <div className="bg-[#16241F] text-[#F6F2E9] rounded-[28px] p-6 sm:p-10 lg:p-12 border border-[#2F5245] shadow-xl grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
           <div className="lg:col-span-5">
-            <PlaceholderImage
-              label="Chinmay's Professional Portrait"
-              sublabel="Recommended: Clean portrait against plain background (800x1000px)."
+            <SmartPhoto
+              src="/images/chinmay-portrait.jpg"
+              label={`${SITE_CONFIG.practitionerName}'s Professional Portrait`}
+              sublabel="Lead Physiotherapist"
               aspectRatio="portrait"
               variant="dark"
-              alt="Placeholder image slot for Chinmay's professional portrait photo"
+              alt={`${SITE_CONFIG.practitionerName}'s professional portrait photo`}
             />
           </div>
 
           <div className="lg:col-span-7 space-y-5">
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#1E332C] text-[#C9A227] font-semibold text-xs border border-[#2F5245]">
               <Award className="w-4 h-4 shrink-0" aria-hidden="true" />
-              <span>{SITE_CONFIG.qualification}</span>
+              <span>Lead Practitioner: {SITE_CONFIG.practitionerName} ({SITE_CONFIG.qualification})</span>
             </div>
 
             <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">
-              About Chinmay
+              About {SITE_CONFIG.brandName}
             </h2>
 
             <p className="text-sm sm:text-base text-[#EFE9DA]/90 leading-relaxed">
-              Chinmay is a qualified physiotherapist holding a Bachelor of Physiotherapy (BPT) degree. Operating as an independent mobile practitioner, Chinmay delivers tailored therapy directly to patients who require convenient, home-based rehabilitation in Bengaluru.
+              {SITE_CONFIG.brandName} is a mobile home-visit physiotherapy practice in Bengaluru led by Chinmay ({SITE_CONFIG.qualification}). Operating as an independent mobile service, {SITE_CONFIG.brandName} delivers tailored physical therapy directly to patients requiring convenient, high-quality home-based rehabilitation.
             </p>
 
             <p className="text-sm sm:text-base text-[#EFE9DA]/90 leading-relaxed">
-              Without the constraints of a physical clinic, every session is structured around your real-world environment, facilitating practical functional recovery and daily activity confidence.
+              Without the overhead or congestion of a physical clinic, every therapy session is structured around your real-world environment, facilitating practical functional recovery and daily activity confidence.
             </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
               <div className="flex items-center gap-2.5 text-xs text-[#EFE9DA] bg-[#1E332C] p-3 rounded-xl border border-[#2F5245]">
                 <CheckCircle2 className="w-4 h-4 text-[#25D366] shrink-0" aria-hidden="true" />
-                <span>Bachelor of Physiotherapy (BPT)</span>
+                <span>Lead: {SITE_CONFIG.practitionerName} ({SITE_CONFIG.qualification})</span>
               </div>
               <div className="flex items-center gap-2.5 text-xs text-[#EFE9DA] bg-[#1E332C] p-3 rounded-xl border border-[#2F5245]">
                 <CheckCircle2 className="w-4 h-4 text-[#25D366] shrink-0" aria-hidden="true" />
@@ -255,7 +257,7 @@ export default function HomePage() {
             Physiotherapy Services Overview
           </h2>
           <p className="text-sm sm:text-base text-[#4A5049] leading-relaxed">
-            Candidate service categories commonly provided during home visits in Bengaluru.
+            Candidate service categories commonly provided by {SITE_CONFIG.brandName} during home visits in Bengaluru.
           </p>
         </div>
 
@@ -263,11 +265,11 @@ export default function HomePage() {
         <div className="bg-[#EFE9DA] p-4 rounded-2xl border border-[#E3DCC9] flex items-start gap-3 max-w-4xl mx-auto">
           <Info className="w-5 h-5 text-[#2F5245] shrink-0 mt-0.5" aria-hidden="true" />
           <div className="text-xs text-[#4A5049] leading-relaxed">
-            <strong className="text-[#12140F]">Service Notice:</strong> The service categories displayed below represent candidate physiotherapy offerings drawn from standard mobile care practice. Specific service availability and custom treatment plans will be confirmed directly with Chinmay during your initial enquiry.
+            <strong className="text-[#12140F]">Service Notice:</strong> The service categories displayed below represent candidate physiotherapy offerings drawn from standard mobile care practice. Specific service availability and custom treatment plans will be confirmed directly during your initial enquiry.
           </div>
         </div>
 
-        {/* Services Grid (Streamlined cards without repetitive CTA links!) */}
+        {/* Services Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {SERVICES_DATA.map((service) => (
             <ServiceCard key={service.slug} service={service} />
@@ -328,12 +330,13 @@ export default function HomePage() {
           </div>
 
           <div className="lg:col-span-5">
-            <PlaceholderImage
+            <SmartPhoto
+              src="/images/home-setup.png"
               label="Home Session Setup Photo"
-              sublabel="Placeholder for representative home physiotherapy session imagery."
+              sublabel="Home visit session setup"
               aspectRatio="portrait"
               variant="dark"
-              alt="Placeholder slot for home physiotherapy visit session demonstration"
+              alt="Home physiotherapy visit session demonstration"
             />
           </div>
         </div>
@@ -373,7 +376,7 @@ export default function HomePage() {
               Conditions Physiotherapy Commonly Helps With (Examples)
             </h2>
             <p className="text-sm text-[#4A5049] leading-relaxed">
-              Chinmay will confirm which specific conditions he currently treats — please ask when you enquire.
+              {SITE_CONFIG.brandName} will confirm which specific conditions are currently treated — please ask when you enquire.
             </p>
           </div>
 
@@ -409,7 +412,7 @@ export default function HomePage() {
       </section>
 
       {/* ================================================================ */}
-      {/* 7. CONTACT & ENQUIRY SECTION (#contact) — FINAL CTA DESTINATION  */}
+      {/* 7. CONTACT & ENQUIRY SECTION (#contact)                          */}
       {/* ================================================================ */}
       <section id="contact" className="scroll-mt-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
@@ -418,7 +421,7 @@ export default function HomePage() {
             <div className="bg-[#16241F] text-white rounded-3xl p-6 sm:p-8 border border-[#2F5245] shadow-xl space-y-6">
               <h2 className="text-2xl font-bold tracking-tight">Direct Contact Details</h2>
               <p className="text-sm text-[#EFE9DA]/90 leading-relaxed">
-                For quick enquiries or direct scheduling requests, calling or messaging on WhatsApp provides immediate access to Chinmay.
+                For quick enquiries or direct scheduling requests, calling or messaging on WhatsApp provides immediate access to {SITE_CONFIG.brandName}.
               </p>
 
               <div className="space-y-4 pt-2">
@@ -458,7 +461,7 @@ export default function HomePage() {
                 <span>Service Radius Disclosure</span>
               </h3>
               <p className="text-xs text-[#4A5049] leading-relaxed">
-                Chinmay operates 100% on a mobile home-visit basis. There is no physical clinic. Services are provided directly at patients&apos; homes within a <strong className="text-[#12140F]">5 km service radius</strong> in Bengaluru.
+                {SITE_CONFIG.brandName} operates 100% on a mobile home-visit basis. There is no physical clinic. Services are provided directly at patients&apos; homes within a <strong className="text-[#12140F]">5 km service radius</strong> in Bengaluru.
               </p>
             </div>
           </div>

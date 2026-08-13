@@ -5,7 +5,7 @@ export function JsonLd() {
   const schema = {
     "@context": "https://schema.org",
     "@type": "PhysicalTherapy",
-    "name": `${SITE_CONFIG.name} — ${SITE_CONFIG.role}`,
+    "name": SITE_CONFIG.brandName,
     "description": "Mobile home-visit physiotherapy services in Bengaluru.",
     "telephone": SITE_CONFIG.phone,
     "areaServed": [
@@ -25,7 +25,7 @@ export function JsonLd() {
     "medicalSpecialty": "Physiotherapy",
     "provider": {
       "@type": "Person",
-      "name": SITE_CONFIG.name,
+      "name": SITE_CONFIG.practitionerName,
       "jobTitle": SITE_CONFIG.role,
       "hasCredential": {
         "@type": "EducationalOccupationalCredential",

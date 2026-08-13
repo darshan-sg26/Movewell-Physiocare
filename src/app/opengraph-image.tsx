@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 import { SITE_CONFIG } from "@/data/site";
 
-export const alt = "Chinmay — Home Visit Physiotherapist in Bengaluru";
+export const alt = "Movewell Physiocare — Home Visit Physiotherapy in Bengaluru";
 export const size = {
   width: 1200,
   height: 630,
@@ -26,25 +26,12 @@ export default async function Image() {
           fontFamily: "sans-serif",
         }}
       >
-        <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
-          <div
-            style={{
-              width: "48px",
-              height: "48px",
-              borderRadius: "50%",
-              backgroundColor: "#EFE9DA",
-              color: "#16241F",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              fontSize: "24px",
-              fontWeight: "bold",
-            }}
-          >
-            C
-          </div>
-          <span style={{ fontSize: "28px", fontWeight: "bold", color: "#FFFFFF" }}>
-            {SITE_CONFIG.name} — {SITE_CONFIG.role}
+        <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
+          <span style={{ fontSize: "36px", fontWeight: "bold", color: "#FFFFFF" }}>
+            {SITE_CONFIG.brandName}
+          </span>
+          <span style={{ fontSize: "20px", color: "#EFE9DA", opacity: 0.9 }}>
+            Home Visit Physiotherapy • Bengaluru
           </span>
         </div>
 
@@ -69,23 +56,23 @@ export default async function Image() {
 
           <h1
             style={{
-              fontSize: "52px",
+              fontSize: "50px",
               fontWeight: "900",
               color: "#FFFFFF",
               margin: 0,
               lineHeight: 1.15,
             }}
           >
-            Personalized Home Physiotherapy Sessions
+            Personalized Home Physiotherapy Care
           </h1>
 
-          <p style={{ fontSize: "24px", color: "#EFE9DA", margin: 0, opacity: 0.9 }}>
-            {SITE_CONFIG.qualification} • {SITE_CONFIG.serviceRadiusKm} km Service Radius in Bengaluru
+          <p style={{ fontSize: "22px", color: "#EFE9DA", margin: 0, opacity: 0.9 }}>
+            Lead Practitioner: {SITE_CONFIG.practitionerName} ({SITE_CONFIG.qualification}) • {SITE_CONFIG.serviceRadiusKm} km Service Radius
           </p>
         </div>
 
         <div style={{ display: "flex", alignItems: "center", gap: "24px", fontSize: "20px", color: "#FFFFFF" }}>
-          <span>Phone: {SITE_CONFIG.phoneDisplay}</span>
+          <span>Call: {SITE_CONFIG.phoneDisplay}</span>
           <span>•</span>
           <span>Direct Home Visits</span>
         </div>

@@ -1,9 +1,8 @@
-// Single source of truth for Chinmay's website data.
-// All values marked CONFIRMED are safe to render.
-// All values marked PLACEHOLDER must be updated when confirmed with Chinmay.
+// Single source of truth for Movewell Physiocare site configuration.
 
 export interface SiteConfig {
-  name: string;
+  brandName: string;
+  practitionerName: string;
   role: string;
   phone: string;
   phoneDisplay: string;
@@ -22,20 +21,21 @@ export interface SiteConfig {
 }
 
 export const SITE_CONFIG: SiteConfig = {
-  name: "Chinmay",                                              // CONFIRMED
-  role: "Physiotherapist",                                      // CONFIRMED
+  brandName: "Movewell Physiocare",                             // BRAND HERO NAME
+  practitionerName: "Chinmay",                                  // PRACTITIONER
+  role: "Lead Physiotherapist",                                 // ROLE
   phone: "+919113285572",                                       // CONFIRMED
   phoneDisplay: "+91 91132 85572",                              // CONFIRMED
   whatsappNumber: "919113285572",                               // CONFIRMED
   qualification: "Bachelor of Physiotherapy (BPT)",             // CONFIRMED
-  registration: "[CHINMAY_REGISTRATION — to be confirmed]",     // PLACEHOLDER
+  registration: "[REGISTRATION — to be confirmed]",             // PLACEHOLDER
   yearsOfExperience: "[YEARS_OF_EXPERIENCE — to be confirmed]", // PLACEHOLDER
-  city: "Bengaluru",                                            // CONFIRMED (broad city)
-  serviceArea: "Bengaluru (5 km service radius)",               // PLACEHOLDER — specific localities to be confirmed
+  city: "Bengaluru",                                            // CONFIRMED
+  serviceArea: "Bengaluru (5 km service radius)",               // PLACEHOLDER
   serviceRadiusKm: 5,                                           // CONFIRMED
-  pricing: "Pricing details available upon enquiry",           // PLACEHOLDER — to be confirmed
-  availability: "Flexible scheduling for home visits",          // PLACEHOLDER — to be confirmed
-  whatsappMessage: "Hi Chinmay, I'd like to enquire about home physiotherapy",
-  whatsappUrl: "https://wa.me/919113285572?text=Hi%20Chinmay%2C%20I%27d%20like%20to%20enquire%20about%20home%20physiotherapy",
+  pricing: "Pricing details available upon enquiry",           // PLACEHOLDER
+  availability: "Flexible scheduling for home visits",          // PLACEHOLDER
+  whatsappMessage: "Hi Movewell Physiocare, I'd like to enquire about home physiotherapy",
+  whatsappUrl: "https://wa.me/919113285572?text=Hi%20Movewell%20Physiocare%2C%20I%27d%20like%20to%20enquire%20about%20home%20physiotherapy",
   telUrl: "tel:+919113285572",
 };

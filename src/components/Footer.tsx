@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import { Phone, MessageCircle, MapPin, Award, CheckCircle2 } from "lucide-react";
+import { Phone, MessageCircle, MapPin, Award, CheckCircle2, Activity } from "lucide-react";
 import { SITE_CONFIG } from "@/data/site";
 
 export function Footer() {
@@ -10,23 +10,23 @@ export function Footer() {
     <footer className="bg-[#16241F] text-[#F6F2E9] border-t border-[#2F5245] mt-auto">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-16 lg:pb-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
-          {/* Brand & Qualification Column */}
+          {/* Brand & Lead Practitioner Column */}
           <div className="space-y-4">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-full bg-[#EFE9DA] text-[#16241F] flex items-center justify-center font-bold text-lg">
-                C
+                <Activity className="w-5 h-5 text-[#16241F]" aria-hidden="true" />
               </div>
               <div>
-                <h2 className="text-xl font-bold text-white tracking-tight">{SITE_CONFIG.name}</h2>
-                <p className="text-xs text-[#EFE9DA]/80">{SITE_CONFIG.role}</p>
+                <h2 className="text-xl font-bold text-white tracking-tight">{SITE_CONFIG.brandName}</h2>
+                <p className="text-xs text-[#EFE9DA]/80">Home Visit Physiotherapy Care</p>
               </div>
             </div>
             <p className="text-sm text-[#EFE9DA]/90 leading-relaxed">
-              Mobile home-visit physiotherapy services bringing professional care directly to your residence in Bengaluru.
+              Mobile home-visit physiotherapy service bringing personalized physical assessment and rehabilitation care directly to your residence in Bengaluru.
             </p>
             <div className="flex items-center gap-2 text-xs text-[#EFE9DA]/90 bg-[#1E332C] px-3 py-2 rounded-xl border border-[#2F5245]">
               <Award className="w-4 h-4 text-[#C9A227] shrink-0" aria-hidden="true" />
-              <span>{SITE_CONFIG.qualification}</span>
+              <span>Practitioner: {SITE_CONFIG.practitionerName} ({SITE_CONFIG.qualification})</span>
             </div>
           </div>
 
@@ -35,32 +35,32 @@ export function Footer() {
             <h3 className="text-base font-bold text-white mb-4 tracking-wide">Navigation</h3>
             <ul className="space-y-2.5 text-sm">
               <li>
-                <Link href="/" className="hover:text-white transition-colors text-[#EFE9DA]/90">
+                <Link href="/#home" className="hover:text-white transition-colors text-[#EFE9DA]/90">
                   Home
                 </Link>
               </li>
               <li>
-                <Link href="/about" className="hover:text-white transition-colors text-[#EFE9DA]/90">
-                  About Chinmay
+                <Link href="/#about" className="hover:text-white transition-colors text-[#EFE9DA]/90">
+                  About Movewell Physiocare
                 </Link>
               </li>
               <li>
-                <Link href="/services" className="hover:text-white transition-colors text-[#EFE9DA]/90">
+                <Link href="/#services" className="hover:text-white transition-colors text-[#EFE9DA]/90">
                   Physiotherapy Services
                 </Link>
               </li>
               <li>
-                <Link href="/home-physiotherapy" className="hover:text-white transition-colors text-[#EFE9DA]/90">
+                <Link href="/#home-physiotherapy" className="hover:text-white transition-colors text-[#EFE9DA]/90">
                   Home Visit Model
                 </Link>
               </li>
               <li>
-                <Link href="/faq" className="hover:text-white transition-colors text-[#EFE9DA]/90">
+                <Link href="/#faq" className="hover:text-white transition-colors text-[#EFE9DA]/90">
                   Frequently Asked Questions
                 </Link>
               </li>
               <li>
-                <Link href="/contact" className="hover:text-white transition-colors text-[#EFE9DA]/90">
+                <Link href="/#contact" className="hover:text-white transition-colors text-[#EFE9DA]/90">
                   Contact & Enquiry
                 </Link>
               </li>
@@ -75,7 +75,7 @@ export function Footer() {
                 <a
                   href={SITE_CONFIG.telUrl}
                   className="flex items-center gap-3 text-[#EFE9DA]/90 hover:text-white transition-colors"
-                  aria-label={`Call ${SITE_CONFIG.phoneDisplay}`}
+                  aria-label={`Call ${SITE_CONFIG.brandName} at ${SITE_CONFIG.phoneDisplay}`}
                 >
                   <div className="w-8 h-8 rounded-full bg-[#1E332C] text-white flex items-center justify-center shrink-0 border border-[#2F5245]">
                     <Phone className="w-4 h-4" aria-hidden="true" />
@@ -89,7 +89,7 @@ export function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-3 text-[#EFE9DA]/90 hover:text-white transition-colors"
-                  aria-label="WhatsApp Chinmay"
+                  aria-label={`WhatsApp ${SITE_CONFIG.brandName}`}
                 >
                   <div className="w-8 h-8 rounded-full bg-[#25D366] text-white flex items-center justify-center shrink-0">
                     <MessageCircle className="w-4 h-4 fill-current" aria-hidden="true" />
@@ -118,7 +118,7 @@ export function Footer() {
                 <span>100% Home Visit Service</span>
               </div>
               <p className="text-xs text-[#EFE9DA]/90 leading-relaxed">
-                This website does not represent a physical clinic. Chinmay provides physiotherapy services exclusively at patients&apos; homes within the confirmed service radius in Bengaluru.
+                This site does not represent a physical clinic. Movewell Physiocare provides physiotherapy services exclusively at patients&apos; homes within the service area.
               </p>
             </div>
           </div>
@@ -126,9 +126,9 @@ export function Footer() {
 
         {/* Bottom Hairline & Legal Copyright */}
         <div className="mt-12 pt-8 border-t border-[#2F5245] flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#EFE9DA]/70">
-          <p>© {currentYear} {SITE_CONFIG.name} — {SITE_CONFIG.role}. All rights reserved.</p>
+          <p>© {currentYear} {SITE_CONFIG.brandName}. All rights reserved.</p>
           <p className="text-center sm:text-right">
-            Independent Mobile Physiotherapy Practice • {SITE_CONFIG.qualification}
+            Independent Mobile Physiotherapy Practice • Lead Practitioner: {SITE_CONFIG.practitionerName} ({SITE_CONFIG.qualification})
           </p>
         </div>
       </div>

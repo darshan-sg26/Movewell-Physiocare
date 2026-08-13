@@ -1,15 +1,7 @@
 "use client";
 
 /**
- * EnquiryForm Component
- * 
- * Target Endpoint: `/api/enquiry` (Serverless API route handling webhook/email dispatch).
- * Features:
- * - Client-side validation & ARIA accessibility
- * - Indian phone number validation
- * - Silent Honeypot field (`hp_field`)
- * - Fallback call & WhatsApp buttons on success or error
- * - Zero medical/diagnosis fields collected for privacy
+ * EnquiryForm Component for Movewell Physiocare
  */
 
 import React, { useState } from "react";
@@ -23,7 +15,7 @@ interface FormDataState {
   contactMethod: "Call" | "WhatsApp";
   message: string;
   preferredTime: string;
-  hp_field: string; // Honeypot
+  hp_field: string;
 }
 
 interface FormErrorsState {
@@ -109,7 +101,7 @@ export function EnquiryForm() {
       }
     } catch (err) {
       console.error("Enquiry submission error:", err);
-      setErrors({ general: "Network error occurred. Please use Call or WhatsApp to reach Chinmay directly." });
+      setErrors({ general: "Network error occurred. Please use Call or WhatsApp to reach Movewell Physiocare directly." });
     } finally {
       setIsSubmitting(false);
     }
@@ -117,7 +109,6 @@ export function EnquiryForm() {
 
   return (
     <div id="enquiry-form" className="bg-[#FFFFFF] rounded-3xl p-6 sm:p-8 lg:p-10 border border-[#E3DCC9] shadow-xl relative overflow-hidden">
-      {/* Decorative top accent bar */}
       <div className="absolute top-0 left-0 right-0 h-2 bg-[#16241F]" />
 
       <div className="mb-6">
@@ -129,7 +120,7 @@ export function EnquiryForm() {
           Request a Home Visit Enquiry
         </h3>
         <p className="text-sm text-[#4A5049] mt-2 leading-relaxed">
-          Fill out this form to inquire about home physiotherapy. Chinmay will review your details and respond via your preferred contact method.
+          Fill out this form to inquire about home physiotherapy. Our team at {SITE_CONFIG.brandName} will review your details and respond via your preferred contact method.
         </p>
       </div>
 
@@ -141,7 +132,7 @@ export function EnquiryForm() {
           <div>
             <h4 className="text-xl font-bold text-[#12140F]">Enquiry Sent Successfully!</h4>
             <p className="text-sm text-[#4A5049] mt-2">
-              Thank you, <strong className="text-[#12140F]">{formData.name}</strong>. Chinmay will review your enquiry and get back to you shortly via {formData.contactMethod}.
+              Thank you, <strong className="text-[#12140F]">{formData.name}</strong>. {SITE_CONFIG.brandName} will review your enquiry and get back to you shortly via {formData.contactMethod}.
             </p>
           </div>
 
@@ -169,7 +160,6 @@ export function EnquiryForm() {
         </div>
       ) : (
         <form onSubmit={handleSubmit} noValidate className="space-y-5">
-          {/* ARIA Live Region for Form Error Summary */}
           {errors.general && (
             <div
               role="alert"
@@ -184,7 +174,6 @@ export function EnquiryForm() {
             </div>
           )}
 
-          {/* Honeypot field - invisible to humans */}
           <div aria-hidden="true" className="absolute -left-[9999px] top-0 opacity-0 pointer-events-none">
             <label htmlFor="hp_field">Do not fill this field</label>
             <input
@@ -198,7 +187,6 @@ export function EnquiryForm() {
             />
           </div>
 
-          {/* Name Input */}
           <div>
             <label htmlFor="name" className="block text-sm font-semibold text-[#12140F] mb-1">
               Your Name <span className="text-[#B3412E]">*</span>
@@ -224,7 +212,6 @@ export function EnquiryForm() {
             )}
           </div>
 
-          {/* Phone Input */}
           <div>
             <label htmlFor="phone" className="block text-sm font-semibold text-[#12140F] mb-1">
               Mobile Phone Number <span className="text-[#B3412E]">*</span>
@@ -251,7 +238,6 @@ export function EnquiryForm() {
             )}
           </div>
 
-          {/* Preferred Contact Method */}
           <div>
             <fieldset>
               <legend className="block text-sm font-semibold text-[#12140F] mb-2">
@@ -299,7 +285,6 @@ export function EnquiryForm() {
             </fieldset>
           </div>
 
-          {/* Preferred Date / Time (Optional) */}
           <div>
             <label htmlFor="preferredTime" className="block text-sm font-semibold text-[#12140F] mb-1">
               Preferred Date / Time <span className="text-xs font-normal text-[#4A5049]">(Optional)</span>
@@ -316,7 +301,6 @@ export function EnquiryForm() {
             />
           </div>
 
-          {/* Message Textarea */}
           <div>
             <label htmlFor="message" className="block text-sm font-semibold text-[#12140F] mb-1">
               Enquiry Message <span className="text-[#B3412E]">*</span>
@@ -342,7 +326,6 @@ export function EnquiryForm() {
             )}
           </div>
 
-          {/* Submit Button */}
           <button
             type="submit"
             disabled={isSubmitting}
@@ -356,13 +339,13 @@ export function EnquiryForm() {
             ) : (
               <>
                 <Send className="w-5 h-5" aria-hidden="true" />
-                <span>Send Enquiry to Chinmay</span>
+                <span>Send Enquiry to {SITE_CONFIG.brandName}</span>
               </>
             )}
           </button>
 
           <p className="text-xs text-center text-[#4A5049] pt-1">
-            Chinmay provides direct home visits within 5 km in Bengaluru. No clinic visits required.
+            Movewell Physiocare provides direct home visits within 5 km in Bengaluru. No clinic visits required.
           </p>
         </form>
       )}

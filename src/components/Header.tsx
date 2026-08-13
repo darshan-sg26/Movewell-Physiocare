@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Phone, MessageCircle, Menu, X } from "lucide-react";
+import { Phone, MessageCircle, Menu, X, Activity } from "lucide-react";
 import { SITE_CONFIG } from "@/data/site";
 import { track } from "@/lib/track";
 
@@ -22,7 +22,6 @@ export function Header() {
   ];
 
   useEffect(() => {
-    // Active section detection via IntersectionObserver
     const sectionIds = ["home", "about", "services", "home-physiotherapy", "faq", "contact"];
     const sectionElements = sectionIds
       .map((id) => document.getElementById(id))
@@ -76,26 +75,26 @@ export function Header() {
     <header className="sticky top-0 z-40 bg-[#16241F] text-[#F6F2E9] border-b border-[#2F5245] shadow-md">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
-          {/* Logo / Brand Name */}
+          {/* Brand Logo Header: Movewell Physiocare */}
           <Link
             href="/#home"
             onClick={(e) => handleNavClick(e, "home")}
             className="group flex items-center gap-3 focus-visible:ring-2 focus-visible:ring-[#F6F2E9] rounded-lg p-1"
           >
             <div className="w-10 h-10 rounded-full bg-[#EFE9DA] text-[#16241F] flex items-center justify-center font-bold text-lg shadow-sm group-hover:scale-105 transition-transform">
-              C
+              <Activity className="w-5 h-5 text-[#16241F]" aria-hidden="true" />
             </div>
             <div className="flex flex-col">
               <span className="font-bold text-lg sm:text-xl tracking-tight text-[#FFFFFF]">
-                {SITE_CONFIG.name}
+                {SITE_CONFIG.brandName}
               </span>
               <span className="text-xs text-[#EFE9DA]/80 tracking-wide font-medium">
-                {SITE_CONFIG.role} • Home Visits
+                Home Visit Physiotherapy • Bengaluru
               </span>
             </div>
           </Link>
 
-          {/* Desktop Navigation Links with Active Scroll Indicator */}
+          {/* Desktop Navigation Links */}
           <nav aria-label="Main Navigation" className="hidden lg:flex items-center space-x-1 xl:space-x-2">
             {navLinks.map((link) => {
               const isActive = activeSection === link.id;
@@ -124,7 +123,7 @@ export function Header() {
             <a
               href={SITE_CONFIG.telUrl}
               onClick={handlePhoneClick}
-              aria-label={`Call Chinmay at ${SITE_CONFIG.phoneDisplay}`}
+              aria-label={`Call ${SITE_CONFIG.brandName} at ${SITE_CONFIG.phoneDisplay}`}
               className="inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-[#FFFFFF] text-[#16241F] font-semibold text-sm hover:bg-[#EFE9DA] transition-colors shadow-sm focus-visible:ring-2 focus-visible:ring-[#FFFFFF]"
             >
               <span className="w-7 h-7 rounded-full bg-[#16241F] text-white flex items-center justify-center">
@@ -138,7 +137,7 @@ export function Header() {
               target="_blank"
               rel="noopener noreferrer"
               onClick={handleWhatsappClick}
-              aria-label="Message Chinmay on WhatsApp"
+              aria-label={`Message ${SITE_CONFIG.brandName} on WhatsApp`}
               className="inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-[#25D366] text-white font-semibold text-sm hover:bg-[#20bd5a] transition-colors shadow-sm focus-visible:ring-2 focus-visible:ring-[#25D366]"
             >
               <MessageCircle className="w-4 h-4 fill-current" aria-hidden="true" />
