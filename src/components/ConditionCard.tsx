@@ -14,12 +14,6 @@ export function ConditionCard({ condition }: ConditionCardProps) {
           <span className="px-2.5 py-0.5 rounded-full bg-[#16241F]/10 text-[#16241F] text-xs font-semibold uppercase tracking-wider">
             {condition.category}
           </span>
-
-          {condition.isPlaceholder && (
-            <span className="text-[10px] text-[#4A5049] font-medium bg-[#F6F2E9] px-2 py-0.5 rounded border border-[#E3DCC9]">
-              Example
-            </span>
-          )}
         </div>
 
         <h4 className="text-base font-bold text-[#12140F] mb-1.5 flex items-center gap-2">

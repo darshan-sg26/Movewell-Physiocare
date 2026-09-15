@@ -1,5 +1,4 @@
-// PLACEHOLDER DATA — these are example service categories only.
-// Confirm actual services offered with Chinmay before publishing.
+// Official service list for MoveWell Physiocare home-visit physiotherapy in Bengaluru.
 
 export interface ServiceItem {
   slug: string;
@@ -7,93 +6,113 @@ export interface ServiceItem {
   shortDescription: string;
   fullDescription: string;
   benefits: string[];
-  iconName: string; // Lucide icon identifier
-  isPlaceholder: boolean;
+  iconName: string;
 }
 
 export const SERVICES_DATA: ServiceItem[] = [
   {
     slug: "manual-therapy",
     title: "Manual Therapy",
-    shortDescription: "Hands-on techniques focused on joint mobilization, muscle tension relief, and soft tissue manipulation.",
-    fullDescription: "Manual therapy involves specialized hands-on clinical techniques to relieve pain, increase range of motion, and reduce soft tissue inflammation. Delivered directly in the comfort of your home.",
+    shortDescription: "Hands-on physiotherapy techniques used as part of an individualised treatment session.",
+    fullDescription: "Hands-on physiotherapy techniques used as part of an individualised treatment session. Tailored to the patient's comfort and movement goals.",
     benefits: [
-      "Targeted joint and muscle mobilization",
-      "Immediate pain and stiffness relief",
-      "Tailored manual pressure for your comfort level",
-      "No clinic travel required"
+      "Individualised hands-on techniques",
+      "Focus on joint and muscle movement",
+      "Adjusted to patient comfort level",
+      "Delivered directly at your home"
     ],
     iconName: "Hand",
-    isPlaceholder: true,
   },
   {
     slug: "exercise-therapy",
     title: "Exercise Therapy",
-    shortDescription: "Customized therapeutic exercise programs designed to rebuild strength, endurance, and flexibility.",
-    fullDescription: "Guided therapeutic exercises tailored to your current physical condition, movement goals, and home environment. Focuses on progressive recovery and functional movement restoration.",
+    shortDescription: "Guided therapeutic exercises selected according to the individual's needs and goals.",
+    fullDescription: "Guided therapeutic exercises selected according to the individual's needs and goals, focused on progressive mobility and strength in your home environment.",
     benefits: [
-      "Custom movement protocols using home equipment",
-      "Step-by-step progress tracking",
-      "Core stabilization and postural correction",
-      "Safe exercise progression under professional supervision"
+      "Tailored home exercise routine",
+      "Focus on strength and movement goals",
+      "Progressive exercise guidance",
+      "Supervised movement practice"
     ],
     iconName: "Activity",
-    isPlaceholder: true,
   },
   {
     slug: "sports-rehabilitation",
     title: "Sports Rehabilitation",
-    shortDescription: "Focused recovery protocols for athletic injuries, joint sprains, muscle strains, and performance return.",
-    fullDescription: "Rehabilitation for active individuals recovering from sports-related injuries, ligament sprains, or muscle strains. Goal-oriented treatment to restore full functional athletic performance safely.",
+    shortDescription: "Exercise-based rehabilitation and movement training for sports-related recovery.",
+    fullDescription: "Exercise-based rehabilitation and movement training for sports-related recovery, designed to support individuals returning to active movement.",
     benefits: [
-      "Acute and chronic sports injury assessment",
-      "Sport-specific movement retraining",
-      "Injury prevention and biomechanical guidance",
-      "Accelerated recovery planning"
+      "Movement training for sports recovery",
+      "Targeted strength and flexibility work",
+      "Focus on safe return to active movement",
+      "Personalised exercise progressions"
     ],
     iconName: "Trophy",
-    isPlaceholder: true,
   },
   {
     slug: "post-surgery-rehabilitation",
     title: "Post-Surgery Rehabilitation",
-    shortDescription: "Structured post-operative care for orthopedic, joint replacement, and spinal surgery recovery.",
-    fullDescription: "Gentle yet progressive rehabilitation following surgery. Guided exercises and mobility work designed to promote tissue healing, restore joint function, and rebuild mobility at home.",
+    shortDescription: "Physiotherapy support following surgery, based on the individual's recovery needs and medical guidance.",
+    fullDescription: "Physiotherapy support following surgery, based on the individual's recovery needs and medical guidance to restore safe home mobility.",
     benefits: [
-      "Post-operative mobility and gait guidance",
-      "Safe progression protocols aligning with surgeon guidelines",
-      "Swelling and scar tissue management exercises",
-      "Convenient home care avoiding travel fatigue"
+      "Care tailored to post-surgical recovery stage",
+      "Guided mobility and gentle movement",
+      "Focus on regaining functional independence",
+      "Convenient home care avoiding travel"
     ],
     iconName: "HeartPulse",
-    isPlaceholder: true,
   },
   {
-    slug: "neck-back-pain-treatment",
+    slug: "neck-back-pain-relief",
     title: "Neck & Back Pain Relief",
-    shortDescription: "Targeted physiotherapy for spine discomfort, postural strain, sciatica, and chronic back stiffness.",
-    fullDescription: "Comprehensive evaluation and treatment for cervical and lumbar discomfort caused by desk work, postural fatigue, or disc issues. Designed to relieve nerve pressure and restore spinal strength.",
+    shortDescription: "Physiotherapy focused on movement, exercise, and appropriate hands-on techniques for neck and back-related concerns.",
+    fullDescription: "Physiotherapy focused on movement, exercise, and appropriate hands-on techniques for neck and back-related concerns.",
     benefits: [
-      "Ergonomic and posture assessment",
-      "Spinal stabilization and decompression exercises",
-      "Pain reduction techniques",
-      "Home-friendly posture modification strategies"
+      "Targeted posture and movement evaluation",
+      "Guided spinal mobility exercises",
+      "Ergonomic and daily activity guidance",
+      "Home-friendly movement strategies"
     ],
     iconName: "ShieldAlert",
-    isPlaceholder: true,
   },
   {
     slug: "geriatric-physiotherapy",
     title: "Geriatric Physiotherapy",
-    shortDescription: "Compassionate home care tailored for seniors to enhance balance, prevent falls, and maintain mobility.",
-    fullDescription: "Specialized physiotherapy for elderly patients experiencing age-related joint stiffness, balance difficulties, arthritis, or mobility reduction. Focused on safety, independence, and fall prevention.",
+    shortDescription: "Physiotherapy focused on mobility, strength, balance, and functional movement for older adults.",
+    fullDescription: "Physiotherapy focused on mobility, strength, balance, and functional movement for older adults in their home surroundings.",
     benefits: [
-      "Fall prevention and balance training",
-      "Joint mobility preservation for arthritis",
-      "Safe transfer and walking practice at home",
-      "Patience-centered compassionate care"
+      "Balance and gait movement guidance",
+      "Joint mobility and muscle strength support",
+      "Functional independence at home",
+      "Patient-centered compassionate sessions"
     ],
     iconName: "UserCheck",
-    isPlaceholder: true,
+  },
+  {
+    slug: "massage-therapy",
+    title: "Massage Therapy",
+    shortDescription: "Massage techniques incorporated into physiotherapy sessions where appropriate.",
+    fullDescription: "Massage techniques incorporated into physiotherapy sessions where clinically appropriate to complement functional exercise and mobility work.",
+    benefits: [
+      "Soft tissue relaxation techniques",
+      "Incorporated into sessions as appropriate",
+      "Targeted muscle tension relief",
+      "Tailored application for comfort"
+    ],
+    iconName: "Sparkles",
+  },
+  {
+    slug: "electrotherapy",
+    title: "Electrotherapy",
+    shortDescription: "Electrotherapy techniques such as electrical stimulation may be used when clinically appropriate.",
+    fullDescription: "Electrotherapy techniques such as electrical stimulation may be used when clinically appropriate as part of a comprehensive home physiotherapy plan.",
+    benefits: [
+      "Electrical stimulation when appropriate",
+      "Targeted therapeutic modality application",
+      "Integrated into broader rehabilitation",
+      "Applied based on individual evaluation"
+    ],
+    iconName: "Zap",
   },
 ];
+

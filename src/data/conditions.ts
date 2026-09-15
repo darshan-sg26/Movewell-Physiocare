@@ -1,12 +1,10 @@
-// PLACEHOLDER DATA — candidate list of conditions.
-// Confirm actual conditions addressed with Chinmay before publishing.
+// Verified conditions treated by MoveWell Physiocare in home-visit sessions.
 
 export interface ConditionItem {
   id: string;
   name: string;
   category: string;
   description: string;
-  isPlaceholder: boolean;
 }
 
 export const CONDITIONS_DATA: ConditionItem[] = [
@@ -14,56 +12,55 @@ export const CONDITIONS_DATA: ConditionItem[] = [
     id: "lower-back-pain",
     name: "Lower Back Pain & Sciatica",
     category: "Spine Care",
-    description: "Lumbar pain, muscle spasms, disc discomfort, and radiating leg tightness.",
-    isPlaceholder: true,
+    description: "Lower back discomfort, nerve tightness, or muscular strain.",
   },
   {
     id: "neck-stiffness",
     name: "Neck Stiffness & Cervical Strain",
     category: "Spine Care",
-    description: "Postural fatigue, upper back tension, and movement restriction from desk work.",
-    isPlaceholder: true,
+    description: "Cervical stiffness, upper back tension, or restricted neck mobility.",
   },
   {
-    id: "knee-pain-arthrosis",
+    id: "knee-pain",
     name: "Knee Pain & Osteoarthritis",
-    category: "Joint & Bone Care",
-    description: "Joint stiffness, walking discomfort, and age-related wear in the knee joint.",
-    isPlaceholder: true,
+    category: "Joint Care",
+    description: "Knee joint stiffness, age-related wear, or walking discomfort.",
   },
   {
-    id: "shoulder-impingement",
+    id: "frozen-shoulder",
     name: "Frozen Shoulder & Impingement",
-    category: "Joint & Bone Care",
-    description: "Limited overhead range of motion, rotator cuff weakness, and shoulder pain.",
-    isPlaceholder: true,
+    category: "Joint Care",
+    description: "Restricted overhead arm range, shoulder stiffness, or rotator cuff discomfort.",
   },
   {
-    id: "post-op-recovery",
+    id: "post-op-care",
     name: "Post-Operative Joint Care",
-    category: "Post-Surgical",
-    description: "Rehabilitation following ACL reconstruction, joint replacements, or fractures.",
-    isPlaceholder: true,
+    category: "Post-Surgical Care",
+    description: "Rehabilitation support following joint surgery or surgical interventions.",
   },
   {
-    id: "sports-sprains",
+    id: "sprains-strains",
     name: "Ligament Sprains & Muscle Strains",
-    category: "Sports & Muscle",
-    description: "Acute muscle tears, ankle sprains, tendonitis, and sports injuries.",
-    isPlaceholder: true,
+    category: "Muscle & Ligament Care",
+    description: "Soft tissue strains, acute muscle tightness, or ligament sprain recovery.",
   },
   {
     id: "balance-gait",
-    name: "Balance Discomfort & Gait Unsteadiness",
-    category: "Mobility & Senior Care",
-    description: "Difficulty walking stably, fear of falling, and general mobility decline.",
-    isPlaceholder: true,
+    name: "Balance & Gait Issues",
+    category: "Mobility Care",
+    description: "Balance challenges, walking unsteadiness, or functional mobility support.",
   },
   {
-    id: "posture-deconditioning",
+    id: "postural-strain",
     name: "Postural Strain & Deconditioning",
-    category: "General Wellness",
-    description: "General muscle weakness or stiffness following periods of restricted activity.",
-    isPlaceholder: true,
+    category: "General Mobility",
+    description: "Muscle weakness or postural fatigue following extended periods of reduced movement.",
+  },
+  {
+    id: "joint-stiffness",
+    name: "Joint Stiffness",
+    category: "Joint Care",
+    description: "General joint tightness and restricted range of movement in daily activities.",
   },
 ];
+

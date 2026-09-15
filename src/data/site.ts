@@ -7,35 +7,40 @@ export interface SiteConfig {
   phone: string;
   phoneDisplay: string;
   whatsappNumber: string;
-  qualification: string;
-  registration: string;
   yearsOfExperience: string;
   city: string;
+  primaryLocation: string;
   serviceArea: string;
-  serviceRadiusKm: number;
+  serviceRadius: string;
   pricing: string;
+  pricingDetail: string;
   availability: string;
+  bookingNotice: string;
+  tagline: string;
   whatsappMessage: string;
   whatsappUrl: string;
   telUrl: string;
 }
 
 export const SITE_CONFIG: SiteConfig = {
-  brandName: "Movewell Physiocare",                             // BRAND HERO NAME
-  practitionerName: "Chinmay",                                  // PRACTITIONER
-  role: "Lead Physiotherapist",                                 // ROLE
-  phone: "+919113285572",                                       // CONFIRMED
-  phoneDisplay: "+91 91132 85572",                              // CONFIRMED
-  whatsappNumber: "919113285572",                               // CONFIRMED
-  qualification: "Bachelor of Physiotherapy (BPT)",             // CONFIRMED
-  registration: "[REGISTRATION — to be confirmed]",             // PLACEHOLDER
-  yearsOfExperience: "[YEARS_OF_EXPERIENCE — to be confirmed]", // PLACEHOLDER
-  city: "Bengaluru",                                            // CONFIRMED
-  serviceArea: "Bengaluru (5 km service radius)",               // PLACEHOLDER
-  serviceRadiusKm: 5,                                           // CONFIRMED
-  pricing: "Pricing details available upon enquiry",           // PLACEHOLDER
-  availability: "Flexible scheduling for home visits",          // PLACEHOLDER
-  whatsappMessage: "Hi Movewell Physiocare, I'd like to enquire about home physiotherapy",
-  whatsappUrl: "https://wa.me/919113285572?text=Hi%20Movewell%20Physiocare%2C%20I%27d%20like%20to%20enquire%20about%20home%20physiotherapy",
+  brandName: "MoveWell Physiocare",
+  practitionerName: "Chinmay",
+  role: "Physiotherapist",
+  phone: "+919113285572",
+  phoneDisplay: "+91 91132 85572",
+  whatsappNumber: "919113285572",
+  yearsOfExperience: "1 year of clinical experience",
+  city: "Bengaluru",
+  primaryLocation: "Hegganahalli Cross, near Sunkadakatte, Bengaluru",
+  serviceArea: "Hegganahalli Cross & surrounding areas (~5–10 km)",
+  serviceRadius: "5–10 km",
+  pricing: "Consultation starts at ₹500",
+  pricingDetail: "Consultation starts at ₹500. Final session pricing may vary depending on the individual's case and requirements.",
+  availability: "Home visits available daily, subject to appointment availability.",
+  bookingNotice: "Please contact Chinmay to check availability and arrange a suitable time.",
+  tagline: "Move well with me.",
+  whatsappMessage: "Hi Chinmay, I would like to enquire about a home physiotherapy session.",
+  whatsappUrl: "https://wa.me/919113285572?text=Hi%20Chinmay%2C%20I%20would%20like%20to%20enquire%20about%20a%20home%20physiotherapy%20session.",
   telUrl: "tel:+919113285572",
 };
+

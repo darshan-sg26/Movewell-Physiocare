@@ -1,5 +1,5 @@
 import React from "react";
-import { Hand, Activity, Trophy, HeartPulse, ShieldAlert, UserCheck, Check, HelpCircle } from "lucide-react";
+import { Hand, Activity, Trophy, HeartPulse, ShieldAlert, UserCheck, Sparkles, Zap, Check, HelpCircle } from "lucide-react";
 import { ServiceItem } from "@/data/services";
 
 const ICON_MAP: Record<string, React.ElementType> = {
@@ -9,6 +9,8 @@ const ICON_MAP: Record<string, React.ElementType> = {
   HeartPulse,
   ShieldAlert,
   UserCheck,
+  Sparkles,
+  Zap,
 };
 
 interface ServiceCardProps {
@@ -32,17 +34,11 @@ export function ServiceCard({ service, variant = "light" }: ServiceCardProps) {
   return (
     <div className={`relative flex flex-col justify-between p-6 sm:p-7 rounded-3xl border transition-all duration-200 ${cardClasses}`}>
       <div>
-        {/* Top bar with Circular Icon Button + Microcopy Badge */}
+        {/* Top bar with Circular Icon Button */}
         <div className="flex items-start justify-between gap-3 mb-5">
           <div className={`w-12 h-12 rounded-full flex items-center justify-center font-bold shadow-sm shrink-0 ${iconCircleClasses}`}>
             <IconComponent className="w-6 h-6" aria-hidden="true" />
           </div>
-
-          {service.isPlaceholder && (
-            <span className="px-2.5 py-1 rounded-full bg-[#EFE9DA] text-[#12140F] border border-[#E3DCC9] font-medium text-[11px] uppercase tracking-wider">
-              Example — to be confirmed
-            </span>
-          )}
         </div>
 
         {/* Title */}

@@ -67,7 +67,7 @@ export default async function Image() {
           </h1>
 
           <p style={{ fontSize: "22px", color: "#EFE9DA", margin: 0, opacity: 0.9 }}>
-            Lead Practitioner: {SITE_CONFIG.practitionerName} ({SITE_CONFIG.qualification}) • {SITE_CONFIG.serviceRadiusKm} km Service Radius
+            Physiotherapy with Chinmay • Hegganahalli Cross Area • {SITE_CONFIG.serviceRadius} Service Area
           </p>
         </div>
 

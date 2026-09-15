@@ -19,13 +19,13 @@ export const metadata: Metadata = {
     default: `${SITE_CONFIG.brandName} — Home Visit Physiotherapy in ${SITE_CONFIG.city}`,
     template: `%s | ${SITE_CONFIG.brandName}`,
   },
-  description: `Mobile home-visit physiotherapy services by ${SITE_CONFIG.brandName} led by ${SITE_CONFIG.practitionerName} (${SITE_CONFIG.qualification}) within a 5 km radius in ${SITE_CONFIG.city}. No physical clinic visits needed.`,
+  description: `Home-visit physiotherapy sessions by ${SITE_CONFIG.brandName} around Hegganahalli Cross, ${SITE_CONFIG.city} with Chinmay. No physical clinic — home visits only.`,
   alternates: {
     canonical: "/",
   },
   openGraph: {
     title: `${SITE_CONFIG.brandName} — Home Visit Physiotherapy in ${SITE_CONFIG.city}`,
-    description: `Mobile home-visit physiotherapy services by ${SITE_CONFIG.brandName} led by ${SITE_CONFIG.practitionerName} (${SITE_CONFIG.qualification}) within a 5 km radius in ${SITE_CONFIG.city}.`,
+    description: `Home-visit physiotherapy sessions by ${SITE_CONFIG.brandName} around Hegganahalli Cross, ${SITE_CONFIG.city} with Chinmay.`,
     type: "website",
     locale: "en_IN",
     siteName: SITE_CONFIG.brandName,
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: `${SITE_CONFIG.brandName} — Home Visit Physiotherapy in ${SITE_CONFIG.city}`,
-    description: `Mobile home-visit physiotherapy services by ${SITE_CONFIG.brandName} led by ${SITE_CONFIG.practitionerName} (${SITE_CONFIG.qualification}) within a 5 km radius in ${SITE_CONFIG.city}.`,
+    description: `Home-visit physiotherapy sessions by ${SITE_CONFIG.brandName} around Hegganahalli Cross, ${SITE_CONFIG.city} with Chinmay.`,
   },
   robots: {
     index: true,

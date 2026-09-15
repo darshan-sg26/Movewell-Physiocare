@@ -26,7 +26,7 @@ export function Footer() {
             </p>
             <div className="flex items-center gap-2 text-xs text-[#EFE9DA]/90 bg-[#1E332C] px-3 py-2 rounded-xl border border-[#2F5245]">
               <Award className="w-4 h-4 text-[#C9A227] shrink-0" aria-hidden="true" />
-              <span>Practitioner: {SITE_CONFIG.practitionerName} ({SITE_CONFIG.qualification})</span>
+              <span>Practitioner: {SITE_CONFIG.practitionerName} ({SITE_CONFIG.yearsOfExperience})</span>
             </div>
           </div>
 
@@ -41,7 +41,7 @@ export function Footer() {
               </li>
               <li>
                 <Link href="/#about" className="hover:text-white transition-colors text-[#EFE9DA]/90">
-                  About Movewell Physiocare
+                  About MoveWell Physiocare
                 </Link>
               </li>
               <li>
@@ -51,7 +51,7 @@ export function Footer() {
               </li>
               <li>
                 <Link href="/#home-physiotherapy" className="hover:text-white transition-colors text-[#EFE9DA]/90">
-                  Home Visit Model
+                  Home Visits
                 </Link>
               </li>
               <li>
@@ -102,7 +102,7 @@ export function Footer() {
                   <MapPin className="w-4 h-4" aria-hidden="true" />
                 </div>
                 <div>
-                  <p className="font-semibold text-white text-xs uppercase tracking-wider">Service Radius</p>
+                  <p className="font-semibold text-white text-xs uppercase tracking-wider">Service Area</p>
                   <p className="text-xs text-[#EFE9DA]/90 mt-0.5">{SITE_CONFIG.serviceArea}</p>
                 </div>
               </li>
@@ -118,7 +118,7 @@ export function Footer() {
                 <span>100% Home Visit Service</span>
               </div>
               <p className="text-xs text-[#EFE9DA]/90 leading-relaxed">
-                This site does not represent a physical clinic. Movewell Physiocare provides physiotherapy services exclusively at patients&apos; homes within the service area.
+                No physical clinic — home visits only. MoveWell Physiocare provides physiotherapy sessions exclusively at patients&apos; homes.
               </p>
             </div>
           </div>
@@ -128,7 +128,7 @@ export function Footer() {
         <div className="mt-12 pt-8 border-t border-[#2F5245] flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#EFE9DA]/70">
           <p>© {currentYear} {SITE_CONFIG.brandName}. All rights reserved.</p>
           <p className="text-center sm:text-right">
-            Independent Mobile Physiotherapy Practice • Lead Practitioner: {SITE_CONFIG.practitionerName} ({SITE_CONFIG.qualification})
+            Home Visit Physiotherapy • Practitioner: {SITE_CONFIG.practitionerName}
           </p>
         </div>
       </div>

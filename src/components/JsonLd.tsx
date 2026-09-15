@@ -6,7 +6,7 @@ export function JsonLd() {
     "@context": "https://schema.org",
     "@type": "PhysicalTherapy",
     "name": SITE_CONFIG.brandName,
-    "description": "Mobile home-visit physiotherapy services in Bengaluru.",
+    "description": "Home-visit physiotherapy services in Bengaluru provided by Chinmay.",
     "telephone": SITE_CONFIG.phone,
     "areaServed": [
       {
@@ -17,9 +17,9 @@ export function JsonLd() {
         "@type": "GeoCircle",
         "geoMidpoint": {
           "@type": "GeoCoordinates",
-          "description": "Bengaluru Service Radius Center",
+          "description": "Hegganahalli Cross, Bengaluru",
         },
-        "geoRadius": `${SITE_CONFIG.serviceRadiusKm} km`,
+        "geoRadius": SITE_CONFIG.serviceRadius,
       },
     ],
     "medicalSpecialty": "Physiotherapy",
@@ -27,11 +27,6 @@ export function JsonLd() {
       "@type": "Person",
       "name": SITE_CONFIG.practitionerName,
       "jobTitle": SITE_CONFIG.role,
-      "hasCredential": {
-        "@type": "EducationalOccupationalCredential",
-        "credentialCategory": "Degree",
-        "name": SITE_CONFIG.qualification,
-      },
     },
   };
 
@@ -42,3 +37,4 @@ export function JsonLd() {
     />
   );
 }
+

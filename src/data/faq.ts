@@ -1,4 +1,4 @@
-// FAQ data for Movewell Physiocare home-visit physiotherapy service in Bengaluru.
+// FAQ data for MoveWell Physiocare home-visit physiotherapy service in Bengaluru.
 
 export interface FAQItem {
   id: string;
@@ -8,33 +8,34 @@ export interface FAQItem {
 
 export const FAQ_DATA: FAQItem[] = [
   {
-    id: "home-visit-model",
-    question: "Does Movewell Physiocare have a physical clinic?",
-    answer: "No. Movewell Physiocare operates exclusively as a mobile home-visit physiotherapy service. All physical assessments and rehabilitation sessions are conducted directly in the comfort of the patient's home.",
-  },
-  {
-    id: "practitioner",
-    question: "Who conducts the home physiotherapy sessions?",
-    answer: "Sessions are conducted by Chinmay (BPT), lead physiotherapist at Movewell Physiocare, providing dedicated 1-on-1 care.",
+    id: "home-physiotherapy",
+    question: "Do you provide home physiotherapy?",
+    answer: "Yes. MoveWell Physiocare provides home-visit physiotherapy sessions. Contact Chinmay to check availability for your location.",
   },
   {
     id: "service-area",
-    question: "What areas in Bengaluru are covered?",
-    answer: "Movewell Physiocare provides home visits within a 5 km service radius in Bengaluru. Specific locality coverage and appointment slots can be confirmed when you contact via phone, WhatsApp, or the enquiry form.",
+    question: "Which areas do you cover?",
+    answer: "Home visits are generally available within approximately a 5–10 km service area around Hegganahalli Cross in Bengaluru. Coverage depends on the location, so please contact Chinmay to confirm.",
   },
   {
-    id: "booking-process",
+    id: "request-visit",
     question: "How do I request a home visit?",
-    answer: "You can request a visit by calling +91 91132 85572, sending a WhatsApp message, or submitting the online enquiry form. Our team will contact you directly to confirm timing and session details.",
+    answer: "Contact Chinmay directly at +91 91132 85572 to discuss your requirements and check availability.",
+  },
+  {
+    id: "session-cost",
+    question: "How much does a session cost?",
+    answer: "Consultation starts at ₹500. Final pricing may vary depending on the individual's case and requirements.",
+  },
+  {
+    id: "working-hours",
+    question: "Are home visits available every day?",
+    answer: "Home visits are available daily, subject to appointment availability.",
   },
   {
     id: "equipment-needed",
-    question: "Do I need specialized equipment at home?",
-    answer: "No. All essential treatment tools and exercise guidance are provided by our physiotherapist or adapted safely using your existing home setup.",
-  },
-  {
-    id: "pricing-availability",
-    question: "What is the fee structure and scheduling availability?",
-    answer: "Pricing and session timing are confirmed during your enquiry, as treatment requirements depend on patient location and clinical scope.",
+    question: "Do I need special equipment at home?",
+    answer: "Equipment requirements can vary depending on the session. Chinmay will advise you if anything specific is needed.",
   },
 ];
+

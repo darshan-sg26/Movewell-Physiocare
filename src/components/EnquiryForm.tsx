@@ -345,7 +345,7 @@ export function EnquiryForm() {
           </button>
 
           <p className="text-xs text-center text-[#4A5049] pt-1">
-            Movewell Physiocare provides direct home visits within 5 km in Bengaluru. No clinic visits required.
+            MoveWell Physiocare provides home visits around Hegganahalli Cross, Bengaluru. Contact Chinmay to check availability.
           </p>
         </form>
       )}

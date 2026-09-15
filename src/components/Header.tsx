@@ -16,7 +16,7 @@ export function Header() {
     { id: "home", label: "Home", href: "/#home" },
     { id: "about", label: "About", href: "/#about" },
     { id: "services", label: "Services", href: "/#services" },
-    { id: "home-physiotherapy", label: "Home Visit Model", href: "/#home-physiotherapy" },
+    { id: "home-physiotherapy", label: "Home Visits", href: "/#home-physiotherapy" },
     { id: "faq", label: "FAQ", href: "/#faq" },
     { id: "contact", label: "Contact", href: "/#contact" },
   ];
