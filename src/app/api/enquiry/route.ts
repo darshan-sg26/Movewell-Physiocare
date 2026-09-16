@@ -42,12 +42,8 @@ export async function POST(request: Request) {
       );
     }
 
-    if (!message || typeof message !== "string" || message.trim().length === 0) {
-      return NextResponse.json(
-        { success: false, message: "Please provide a brief enquiry message." },
-        { status: 400 }
-      );
-    }
+    // Message is optional per section 14
+    const cleanMessage = typeof message === "string" ? message.trim() : "";
 
     // Server-side integration point:
     // If ENQUIRY_WEBHOOK_URL or ENQUIRY_API_KEY is configured, dispatch the message.
@@ -61,7 +57,7 @@ export async function POST(request: Request) {
             name: name.trim(),
             phone: cleanPhone,
             contactMethod: contactMethod || "Call",
-            message: message.trim(),
+            message: cleanMessage || "General Home Visit Enquiry",
             preferredTime: preferredTime?.trim() || "Not specified",
             submittedAt: new Date().toISOString(),
           }),

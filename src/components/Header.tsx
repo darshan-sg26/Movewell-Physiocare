@@ -9,58 +9,26 @@ import { track } from "@/lib/track";
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState<string>("home");
   const pathname = usePathname();
 
   const navLinks = [
-    { id: "home", label: "Home", href: "/#home" },
-    { id: "about", label: "About", href: "/#about" },
-    { id: "services", label: "Services", href: "/#services" },
-    { id: "home-physiotherapy", label: "Home Visits", href: "/#home-physiotherapy" },
-    { id: "faq", label: "FAQ", href: "/#faq" },
-    { id: "contact", label: "Contact", href: "/#contact" },
+    { id: "home", label: "Home", href: "/" },
+    { id: "about", label: "About", href: "/about" },
+    { id: "services", label: "Services", href: "/services" },
+    { id: "home-physiotherapy", label: "Home Physiotherapy", href: "/home-physiotherapy" },
+    { id: "faq", label: "FAQ", href: "/faq" },
+    { id: "contact", label: "Contact", href: "/contact" },
   ];
 
-  useEffect(() => {
-    const sectionIds = ["home", "about", "services", "home-physiotherapy", "faq", "contact"];
-    const sectionElements = sectionIds
-      .map((id) => document.getElementById(id))
-      .filter((el): el is HTMLElement => el !== null);
-
-    if (sectionElements.length === 0) return;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveSection(entry.target.id);
-          }
-        });
-      },
-      {
-        rootMargin: "-20% 0px -45% 0px",
-        threshold: 0.1,
-      }
-    );
-
-    sectionElements.forEach((el) => observer.observe(el));
-
-    return () => {
-      observer.disconnect();
-    };
-  }, [pathname]);
-
-  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
-    if (pathname === "/") {
-      const el = document.getElementById(id);
-      if (el) {
-        e.preventDefault();
-        setActiveSection(id);
-        setMobileMenuOpen(false);
-        el.scrollIntoView({ behavior: "smooth" });
-        window.history.pushState(null, "", `/#${id}`);
-      }
+  const getIsActive = (href: string) => {
+    if (href === "/") {
+      return pathname === "/";
     }
+    return pathname.startsWith(href);
+  };
+
+  const handleLinkClick = () => {
+    setMobileMenuOpen(false);
   };
 
   const handlePhoneClick = () => {
@@ -77,8 +45,8 @@ export function Header() {
         <div className="flex items-center justify-between h-20">
           {/* Brand Logo Header: Movewell Physiocare */}
           <Link
-            href="/#home"
-            onClick={(e) => handleNavClick(e, "home")}
+            href="/"
+            onClick={handleLinkClick}
             className="group flex items-center gap-3 focus-visible:ring-2 focus-visible:ring-[#F6F2E9] rounded-lg p-1"
           >
             <div className="w-10 h-10 rounded-full bg-[#EFE9DA] text-[#16241F] flex items-center justify-center font-bold text-lg shadow-sm group-hover:scale-105 transition-transform">
@@ -97,12 +65,12 @@ export function Header() {
           {/* Desktop Navigation Links */}
           <nav aria-label="Main Navigation" className="hidden lg:flex items-center space-x-1 xl:space-x-2">
             {navLinks.map((link) => {
-              const isActive = activeSection === link.id;
+              const isActive = getIsActive(link.href);
               return (
                 <Link
                   key={link.id}
                   href={link.href}
-                  onClick={(e) => handleNavClick(e, link.id)}
+                  onClick={handleLinkClick}
                   className={`px-3.5 py-2 rounded-xl text-sm font-medium transition-all relative ${
                     isActive
                       ? "bg-[#1E332C] text-[#FFFFFF] font-semibold border border-[#2F5245] shadow-inner"
@@ -169,12 +137,12 @@ export function Header() {
         <div className="lg:hidden bg-[#16241F] border-b border-[#2F5245] px-4 pt-3 pb-6 space-y-2 animate-in slide-in-from-top duration-200">
           <nav aria-label="Mobile Navigation" className="flex flex-col space-y-1">
             {navLinks.map((link) => {
-              const isActive = activeSection === link.id;
+              const isActive = getIsActive(link.href);
               return (
                 <Link
                   key={link.id}
                   href={link.href}
-                  onClick={(e) => handleNavClick(e, link.id)}
+                  onClick={handleLinkClick}
                   className={`px-4 py-3 rounded-xl text-base font-medium flex items-center justify-between ${
                     isActive
                       ? "bg-[#1E332C] text-white font-semibold border border-[#2F5245]"

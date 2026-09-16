@@ -64,12 +64,7 @@ export function EnquiryForm() {
       newErrors.phone = "Please enter a valid 10-digit Indian mobile number (e.g. 9113285572).";
     }
 
-    if (!formData.message.trim()) {
-      newErrors.message = "Please write a brief description of your enquiry.";
-    } else if (formData.message.trim().length < 5) {
-      newErrors.message = "Enquiry message must be at least 5 characters.";
-    }
-
+    // Message is optional per section 14
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -101,7 +96,7 @@ export function EnquiryForm() {
       }
     } catch (err) {
       console.error("Enquiry submission error:", err);
-      setErrors({ general: "Network error occurred. Please use Call or WhatsApp to reach Movewell Physiocare directly." });
+      setErrors({ general: "Network error occurred. Please use Call or WhatsApp to reach MoveWell Physiocare directly." });
     } finally {
       setIsSubmitting(false);
     }
@@ -120,7 +115,7 @@ export function EnquiryForm() {
           Request a Home Visit Enquiry
         </h3>
         <p className="text-sm text-[#4A5049] mt-2 leading-relaxed">
-          Fill out this form to inquire about home physiotherapy. Our team at {SITE_CONFIG.brandName} will review your details and respond via your preferred contact method.
+          Fill out this form to inquire about home physiotherapy. Chinmay will review your details and respond via your preferred contact method.
         </p>
       </div>
 
@@ -164,12 +159,32 @@ export function EnquiryForm() {
             <div
               role="alert"
               aria-live="polite"
-              className="p-4 rounded-xl bg-[#B3412E]/10 border border-[#B3412E]/30 text-[#B3412E] text-sm flex items-start gap-3"
+              className="p-4 rounded-xl bg-[#B3412E]/10 border border-[#B3412E]/30 text-[#B3412E] text-sm space-y-3"
             >
-              <AlertCircle className="w-5 h-5 shrink-0 mt-0.5" aria-hidden="true" />
-              <div>
-                <p className="font-semibold">Submission Failed</p>
-                <p className="mt-0.5">{errors.general}</p>
+              <div className="flex items-start gap-3">
+                <AlertCircle className="w-5 h-5 shrink-0 mt-0.5" aria-hidden="true" />
+                <div>
+                  <p className="font-semibold">Submission Failed</p>
+                  <p className="mt-0.5">{errors.general}</p>
+                </div>
+              </div>
+              <div className="flex flex-wrap items-center gap-2 pt-1 border-t border-[#B3412E]/20">
+                <a
+                  href={SITE_CONFIG.telUrl}
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#16241F] text-white text-xs font-semibold hover:bg-[#1E332C]"
+                >
+                  <Phone className="w-3.5 h-3.5" aria-hidden="true" />
+                  <span>Call {SITE_CONFIG.phoneDisplay}</span>
+                </a>
+                <a
+                  href={SITE_CONFIG.whatsappUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#25D366] text-white text-xs font-semibold hover:bg-[#20bd5a]"
+                >
+                  <MessageCircle className="w-3.5 h-3.5 fill-current" aria-hidden="true" />
+                  <span>WhatsApp Message</span>
+                </a>
               </div>
             </div>
           )}
@@ -303,27 +318,22 @@ export function EnquiryForm() {
 
           <div>
             <label htmlFor="message" className="block text-sm font-semibold text-[#12140F] mb-1">
-              Enquiry Message <span className="text-[#B3412E]">*</span>
+              Enquiry Message <span className="text-xs font-normal text-[#4A5049]">(Optional)</span>
             </label>
             <textarea
               id="message"
               name="message"
               rows={4}
-              required
               maxLength={1000}
-              placeholder="Describe your query or general physical discomfort (e.g. seeking home physiotherapy for knee stiffness in Bengaluru)..."
+              placeholder="Describe your enquiry (e.g. seeking home physiotherapy session around Hegganahalli Cross)..."
               onFocus={handleFirstInteraction}
               value={formData.message}
               onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-              className={`w-full px-4 py-3 rounded-xl border bg-[#F6F2E9]/40 text-[#12140F] text-base focus:bg-white focus:outline-none transition-colors ${
-                errors.message ? "border-[#B3412E] ring-1 ring-[#B3412E]" : "border-[#E3DCC9] focus:border-[#2F5245]"
-              }`}
+              className="w-full px-4 py-3 rounded-xl border border-[#E3DCC9] bg-[#F6F2E9]/40 text-[#12140F] text-base focus:bg-white focus:border-[#2F5245] focus:outline-none transition-colors"
             />
-            {errors.message && (
-              <p id="message-error" aria-live="polite" className="text-xs text-[#B3412E] mt-1 font-medium flex items-center gap-1">
-                <AlertCircle className="w-3.5 h-3.5" aria-hidden="true" /> {errors.message}
-              </p>
-            )}
+            <p className="text-xs text-[#4A5049] mt-1">
+              Briefly tell us what you&apos;d like to enquire about. Please don&apos;t include sensitive medical information.
+            </p>
           </div>
 
           <button

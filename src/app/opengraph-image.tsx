@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 import { SITE_CONFIG } from "@/data/site";
 
-export const alt = "Movewell Physiocare — Home Visit Physiotherapy in Bengaluru";
+export const alt = "MoveWell Physiocare — Home Visit Physiotherapy in Bengaluru";
 export const size = {
   width: 1200,
   height: 630,

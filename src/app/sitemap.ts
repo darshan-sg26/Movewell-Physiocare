@@ -1,7 +1,8 @@
 import { MetadataRoute } from "next";
+import { SITE_CONFIG } from "@/data/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://movewellphysiocare.com";
+  const baseUrl = SITE_CONFIG.siteUrl;
   const currentDate = new Date().toISOString().split("T")[0];
 
   const routes = [
@@ -9,8 +10,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/about",
     "/services",
     "/home-physiotherapy",
-    "/contact",
+    "/areas-we-serve",
     "/faq",
+    "/contact",
   ];
 
   return routes.map((route) => ({

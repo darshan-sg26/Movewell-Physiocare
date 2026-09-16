@@ -4,6 +4,7 @@ export interface SiteConfig {
   brandName: string;
   practitionerName: string;
   role: string;
+  siteUrl: string;
   phone: string;
   phoneDisplay: string;
   whatsappNumber: string;
@@ -26,6 +27,7 @@ export const SITE_CONFIG: SiteConfig = {
   brandName: "MoveWell Physiocare",
   practitionerName: "Chinmay",
   role: "Physiotherapist",
+  siteUrl: "https://movewellphysiocare.com",
   phone: "+919113285572",
   phoneDisplay: "+91 91132 85572",
   whatsappNumber: "919113285572",
@@ -39,8 +41,8 @@ export const SITE_CONFIG: SiteConfig = {
   availability: "Home visits available daily, subject to appointment availability.",
   bookingNotice: "Please contact Chinmay to check availability and arrange a suitable time.",
   tagline: "Move well with me.",
-  whatsappMessage: "Hi Chinmay, I would like to enquire about a home physiotherapy session.",
-  whatsappUrl: "https://wa.me/919113285572?text=Hi%20Chinmay%2C%20I%20would%20like%20to%20enquire%20about%20a%20home%20physiotherapy%20session.",
+  whatsappMessage: "Hi Chinmay, I'd like to enquire about a home physiotherapy session. My name is ______. I am located in ______.",
+  whatsappUrl: "https://wa.me/919113285572?text=Hi%20Chinmay%2C%20I%27d%20like%20to%20enquire%20about%20a%20home%20physiotherapy%20session.%20My%20name%20is%20______.%20I%20am%20located%20in%20______.",
   telUrl: "tel:+919113285572",
 };
 

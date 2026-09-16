@@ -4,22 +4,20 @@ import { SITE_CONFIG } from "@/data/site";
 export function JsonLd() {
   const schema = {
     "@context": "https://schema.org",
-    "@type": "PhysicalTherapy",
+    "@type": "Physiotherapy",
     "name": SITE_CONFIG.brandName,
-    "description": "Home-visit physiotherapy services in Bengaluru provided by Chinmay.",
+    "description": "Home-visit physiotherapy service around Hegganahalli Cross, Bengaluru.",
+    "url": SITE_CONFIG.siteUrl,
     "telephone": SITE_CONFIG.phone,
+    "priceRange": "₹500+",
     "areaServed": [
       {
-        "@type": "AdministrativeArea",
-        "name": SITE_CONFIG.city,
+        "@type": "City",
+        "name": "Bengaluru",
       },
       {
-        "@type": "GeoCircle",
-        "geoMidpoint": {
-          "@type": "GeoCoordinates",
-          "description": "Hegganahalli Cross, Bengaluru",
-        },
-        "geoRadius": SITE_CONFIG.serviceRadius,
+        "@type": "AdministrativeArea",
+        "name": "Hegganahalli Cross and surrounding areas (~5–10 km)",
       },
     ],
     "medicalSpecialty": "Physiotherapy",
