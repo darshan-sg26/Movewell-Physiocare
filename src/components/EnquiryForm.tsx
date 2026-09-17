@@ -1,7 +1,8 @@
 "use client";
 
 /**
- * EnquiryForm Component for Movewell Physiocare
+ * EnquiryForm Component for MoveWell Physiocare
+ * Integrated with FormSubmit AJAX endpoint (chinmayc047@gmail.com)
  */
 
 import React, { useState } from "react";
@@ -15,7 +16,7 @@ interface FormDataState {
   contactMethod: "Call" | "WhatsApp";
   message: string;
   preferredTime: string;
-  hp_field: string;
+  _honey: string;
 }
 
 interface FormErrorsState {
@@ -32,7 +33,12 @@ export function EnquiryForm() {
     contactMethod: "Call",
     message: "",
     preferredTime: "",
-    hp_field: "",
+    _honey: "",
+  });
+
+  const [submittedInfo, setSubmittedInfo] = useState<{ name: string; contactMethod: string }>({
+    name: "",
+    contactMethod: "Call",
   });
 
   const [errors, setErrors] = useState<FormErrorsState>({});
@@ -64,7 +70,6 @@ export function EnquiryForm() {
       newErrors.phone = "Please enter a valid 10-digit Indian mobile number (e.g. 9113285572).";
     }
 
-    // Message is optional per section 14
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -79,24 +84,78 @@ export function EnquiryForm() {
 
     setIsSubmitting(true);
 
+    // Silent honeypot check: If bot filled _honey, simulate success without sending
+    if (formData._honey && formData._honey.trim() !== "") {
+      setSubmittedInfo({
+        name: formData.name.trim(),
+        contactMethod: formData.contactMethod,
+      });
+      setIsSuccess(true);
+      setIsSubmitting(false);
+      setFormData({
+        name: "",
+        phone: "",
+        contactMethod: "Call",
+        message: "",
+        preferredTime: "",
+        _honey: "",
+      });
+      return;
+    }
+
     try {
-      const res = await fetch("/api/enquiry", {
+      const payload = {
+        name: formData.name.trim(),
+        phone: formData.phone.trim(),
+        "Preferred Contact Method": formData.contactMethod,
+        "Preferred Date / Time": formData.preferredTime.trim() || "Not specified",
+        "Enquiry Message": formData.message.trim() || "General Home Visit Enquiry",
+        _subject: "New MoveWell Physiocare Home Visit Enquiry",
+        _template: "table",
+        _honey: formData._honey,
+        _captcha: "true",
+      };
+
+      const res = await fetch("https://formsubmit.co/ajax/chinmayc047@gmail.com", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(payload),
       });
 
-      const data = await res.json();
+      const data = await res.json().catch(() => null);
 
-      if (res.ok && data.success) {
+      if (res.ok && (data?.success === "true" || data?.success === true || res.status === 200)) {
+        setSubmittedInfo({
+          name: formData.name.trim(),
+          contactMethod: formData.contactMethod,
+        });
         setIsSuccess(true);
+        // Clear the form
+        setFormData({
+          name: "",
+          phone: "",
+          contactMethod: "Call",
+          message: "",
+          preferredTime: "",
+          _honey: "",
+        });
         track("enquiry_submitted", { contactMethod: formData.contactMethod });
       } else {
-        setErrors({ general: data.message || "Unable to submit enquiry. Please call or WhatsApp directly." });
+        setErrors({
+          general:
+            data?.message ||
+            "Unable to submit enquiry at this moment. Please reach out directly via Call or WhatsApp.",
+        });
       }
     } catch (err) {
-      console.error("Enquiry submission error:", err);
-      setErrors({ general: "Network error occurred. Please use Call or WhatsApp to reach MoveWell Physiocare directly." });
+      console.error("FormSubmit AJAX error:", err);
+      setErrors({
+        general:
+          "Network error occurred. Please call or message on WhatsApp to reach MoveWell Physiocare directly.",
+      });
     } finally {
       setIsSubmitting(false);
     }
@@ -127,7 +186,7 @@ export function EnquiryForm() {
           <div>
             <h4 className="text-xl font-bold text-[#12140F]">Enquiry Sent Successfully!</h4>
             <p className="text-sm text-[#4A5049] mt-2">
-              Thank you, <strong className="text-[#12140F]">{formData.name}</strong>. {SITE_CONFIG.brandName} will review your enquiry and get back to you shortly via {formData.contactMethod}.
+              Thank you{submittedInfo.name ? `, ${submittedInfo.name}` : ""}. {SITE_CONFIG.brandName} will review your enquiry and get back to you shortly via {submittedInfo.contactMethod || "your preferred contact method"}.
             </p>
           </div>
 
@@ -151,6 +210,19 @@ export function EnquiryForm() {
                 <span>WhatsApp Now</span>
               </a>
             </div>
+
+            <div className="pt-2">
+              <button
+                type="button"
+                onClick={() => {
+                  setIsSuccess(false);
+                  setErrors({});
+                }}
+                className="text-xs text-[#4A5049] hover:text-[#12140F] underline font-medium cursor-pointer"
+              >
+                Submit another enquiry
+              </button>
+            </div>
           </div>
         </div>
       ) : (
@@ -164,7 +236,7 @@ export function EnquiryForm() {
               <div className="flex items-start gap-3">
                 <AlertCircle className="w-5 h-5 shrink-0 mt-0.5" aria-hidden="true" />
                 <div>
-                  <p className="font-semibold">Submission Failed</p>
+                  <p className="font-semibold">Submission Issue</p>
                   <p className="mt-0.5">{errors.general}</p>
                 </div>
               </div>
@@ -189,16 +261,17 @@ export function EnquiryForm() {
             </div>
           )}
 
+          {/* Honeypot Spam Trap for FormSubmit (_honey) */}
           <div aria-hidden="true" className="absolute -left-[9999px] top-0 opacity-0 pointer-events-none">
-            <label htmlFor="hp_field">Do not fill this field</label>
+            <label htmlFor="_honey">Do not fill this field</label>
             <input
               type="text"
-              id="hp_field"
-              name="hp_field"
+              id="_honey"
+              name="_honey"
               tabIndex={-1}
               autoComplete="off"
-              value={formData.hp_field}
-              onChange={(e) => setFormData({ ...formData, hp_field: e.target.value })}
+              value={formData._honey}
+              onChange={(e) => setFormData({ ...formData, _honey: e.target.value })}
             />
           </div>
 
