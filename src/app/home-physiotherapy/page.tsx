@@ -23,7 +23,6 @@ import { SITE_CONFIG } from "@/data/site";
 import { SERVICES_DATA } from "@/data/services";
 import { FAQ_DATA } from "@/data/faq";
 import { FAQAccordion } from "@/components/FAQAccordion";
-import { SmartPhoto } from "@/components/SmartPhoto";
 
 export const metadata: Metadata = {
   title: "Home Visit Physiotherapy in Bengaluru | MoveWell Physiocare",
@@ -43,6 +42,75 @@ export const metadata: Metadata = {
 };
 
 export default function HomePhysiotherapyPage() {
+  const steps = [
+    {
+      step: "01",
+      title: "Initial Contact & Pre-Assessment",
+      description:
+        "Call or message Chinmay directly on WhatsApp with your location, primary discomfort, and scheduling preference.",
+      icon: Phone,
+    },
+    {
+      step: "02",
+      title: "Appointment Confirmation",
+      description:
+        "Confirm your address around Hegganahalli Cross (~5–10 km) and agree on a convenient appointment time.",
+      icon: Calendar,
+    },
+    {
+      step: "03",
+      title: "In-Home Movement Evaluation",
+      description:
+        "Chinmay visits your home to assess range of motion, muscle strength, joint mobility, and functional movement.",
+      icon: ClipboardCheck,
+    },
+    {
+      step: "04",
+      title: "Targeted Therapy & Guidance",
+      description:
+        "Receive personalized hands-on therapy, guided corrective exercises, and daily ergonomics tailored to your home environment.",
+      icon: ShieldCheck,
+    },
+  ];
+
+  const whoMayBenefit = [
+    {
+      title: "Patients Recovering from Surgery",
+      description:
+        "Individuals recovering from orthopedic or general surgery who should avoid traveling through Bangalore traffic.",
+    },
+    {
+      title: "Seniors with Limited Mobility",
+      description:
+        "Elderly family members who require gentle movement exercise, balance practice, and fall prevention in their own home.",
+    },
+    {
+      title: "Joint & Musculoskeletal Pain",
+      description:
+        "Individuals suffering from persistent knee, shoulder, or back pain who benefit from one-on-one guided movement.",
+    },
+    {
+      title: "Busy Professionals & Caregivers",
+      description:
+        "Those whose schedules make clinic travel impractical and who prefer professional physiotherapy at home.",
+    },
+  ];
+
+  const whatToPrepare = [
+    {
+      title: "Comfortable Clothing",
+      description: "Loose, comfortable attire (e.g. track pants, t-shirt) that permits easy movement and joint evaluation.",
+    },
+    {
+      title: "Clear Movement Space",
+      description: "A small, well-lit floor area or sturdy chair and bed where exercises and physical assessments can take place safely.",
+    },
+    {
+      title: "Prior Medical Records (If Applicable)",
+      description: "Relevant doctor recommendations, surgical discharge summaries, or imaging reports to inform safe practice.",
+    },
+  ];
+
   const processSteps = [
     {
       num: "01",
@@ -68,44 +136,6 @@ export default function HomePhysiotherapyPage() {
       num: "05",
       title: "Physiotherapy Session at Home",
       description: "Comprehensive assessment, manual therapy, and guided therapeutic exercises conducted in your home.",
-    },
-  ];
-
-  const whoMayBenefit = [
-    {
-      title: "Post-Operative Recovery",
-      description:
-        "Patients following joint replacements, fracture repairs, or orthopedic surgery who find travel painful or challenging.",
-    },
-    {
-      title: "Elderly & Seniors",
-      description:
-        "Older adults seeking to improve gait balance, reduce fall risk, and maintain daily functional independence in familiar home surroundings.",
-    },
-    {
-      title: "Acute Back & Neck Discomfort",
-      description:
-        "Individuals experiencing severe stiffness, cervical fatigue, or lumbar discomfort where sitting in traffic could aggravate symptoms.",
-    },
-    {
-      title: "Mobility-Restricted Individuals",
-      description:
-        "Anyone who finds traveling to an outpatient facility inconvenient or exhausting, preferring direct 1-on-1 care at home.",
-    },
-  ];
-
-  const whatToPrepare = [
-    {
-      title: "Comfortable Clothing",
-      description: "Loose, comfortable attire (e.g. track pants, t-shirt) that permits easy movement and joint evaluation.",
-    },
-    {
-      title: "Clear Movement Space",
-      description: "A small, well-lit floor area or sturdy chair and bed where exercises and physical assessments can take place safely.",
-    },
-    {
-      title: "Prior Medical Records (If Applicable)",
-      description: "Relevant doctor recommendations, surgical discharge summaries, or imaging reports to inform safe practice.",
     },
   ];
 
@@ -186,14 +216,62 @@ export default function HomePhysiotherapyPage() {
           </div>
 
           <div className="lg:col-span-5">
-            <SmartPhoto
-              src="/images/home-setup.png"
-              label="Home Physiotherapy Setup"
-              sublabel="Representative home visit setup"
-              aspectRatio="portrait"
-              variant="dark"
-              alt="Physiotherapy home visit session"
-            />
+            <div className="bg-[#1E332C] rounded-3xl p-6 sm:p-7 border border-[#2F5245] shadow-lg space-y-4">
+              <div className="flex items-center justify-between border-b border-[#2F5245] pb-3">
+                <span className="text-xs font-bold text-[#25D366] uppercase tracking-wider">
+                  Care Process
+                </span>
+                <span className="text-xs text-[#EFE9DA]/70 font-medium">
+                  At Your Residence
+                </span>
+              </div>
+
+              <h3 className="text-lg font-bold text-white tracking-tight">
+                What to Expect During a Home Visit
+              </h3>
+
+              <div className="space-y-3 pt-1">
+                <div className="flex items-start gap-3 text-xs">
+                  <div className="w-6 h-6 rounded-full bg-[#16241F] text-[#25D366] font-bold flex items-center justify-center shrink-0 border border-[#2F5245]">
+                    1
+                  </div>
+                  <div>
+                    <p className="font-semibold text-white">Pre-Visit Consultation</p>
+                    <p className="text-[#EFE9DA]/70 mt-0.5">Quick call or WhatsApp message to discuss your condition and confirm location.</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-3 text-xs">
+                  <div className="w-6 h-6 rounded-full bg-[#16241F] text-[#25D366] font-bold flex items-center justify-center shrink-0 border border-[#2F5245]">
+                    2
+                  </div>
+                  <div>
+                    <p className="font-semibold text-white">In-Home Assessment</p>
+                    <p className="text-[#EFE9DA]/70 mt-0.5">Evaluation of joint movement, posture, and mobility in your living environment.</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-3 text-xs">
+                  <div className="w-6 h-6 rounded-full bg-[#16241F] text-[#25D366] font-bold flex items-center justify-center shrink-0 border border-[#2F5245]">
+                    3
+                  </div>
+                  <div>
+                    <p className="font-semibold text-white">Hands-On & Exercise Therapy</p>
+                    <p className="text-[#EFE9DA]/70 mt-0.5">Guided exercise, manual techniques, and functional movement practice.</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-3 text-xs">
+                  <div className="w-6 h-6 rounded-full bg-[#16241F] text-[#25D366] font-bold flex items-center justify-center shrink-0 border border-[#2F5245]">
+                    4
+                  </div>
+                  <div>
+                    <p className="font-semibold text-white">Daily Routine Guidance</p>
+                    <p className="text-[#EFE9DA]/70 mt-0.5">Ergonomic tips and exercises tailored to your furniture, bed, and stairs.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>

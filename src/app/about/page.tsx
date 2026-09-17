@@ -15,7 +15,6 @@ import {
   IndianRupee,
 } from "lucide-react";
 import { SITE_CONFIG } from "@/data/site";
-import { SmartPhoto } from "@/components/SmartPhoto";
 
 export const metadata: Metadata = {
   title: "About Chinmay | MoveWell Physiocare",
@@ -43,19 +42,8 @@ export default function AboutPage() {
       <section className="bg-[#16241F] text-[#F6F2E9] rounded-[28px] p-6 sm:p-10 lg:p-14 border border-[#2F5245] shadow-2xl relative overflow-hidden">
         <div className="absolute inset-0 opacity-5 pointer-events-none bg-[radial-gradient(#FFFFFF_1px,transparent_1px)] [background-size:24px_24px]" />
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center relative z-10">
-          <div className="lg:col-span-5">
-            <SmartPhoto
-              src="/images/chinmay-portrait.jpg"
-              label="Home Physiotherapy Practice"
-              sublabel="Representative physiotherapy session photo"
-              aspectRatio="portrait"
-              variant="dark"
-              alt="Physiotherapy care at home"
-            />
-          </div>
-
-          <div className="lg:col-span-7 space-y-5">
+        <div className="relative z-10 space-y-8">
+          <div className="max-w-3xl space-y-5">
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#1E332C] text-[#C9A227] font-semibold text-xs border border-[#2F5245]">
               <Award className="w-4 h-4 shrink-0" aria-hidden="true" />
               <span>Practitioner: Chinmay ({SITE_CONFIG.yearsOfExperience})</span>
@@ -69,30 +57,42 @@ export default function AboutPage() {
               &ldquo;{SITE_CONFIG.tagline}&rdquo;
             </blockquote>
 
-            <p className="text-sm sm:text-base text-[#EFE9DA]/90 leading-relaxed">
+            <p className="text-base sm:text-lg text-[#EFE9DA]/90 leading-relaxed">
               Chinmay provides home-visit physiotherapy sessions for individuals seeking personalised physiotherapy and rehabilitation support at home.
             </p>
 
             <p className="text-sm sm:text-base text-[#EFE9DA]/90 leading-relaxed">
               Operating as an independent mobile physiotherapy service under MoveWell Physiocare, care is brought directly to your living space around Hegganahalli Cross, Bengaluru. This eliminates clinic travel stress while enabling functional movement rehabilitation in your actual home environment.
             </p>
+          </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
-              <div className="flex items-center gap-2.5 text-xs text-[#EFE9DA] bg-[#1E332C] p-3 rounded-xl border border-[#2F5245]">
-                <CheckCircle2 className="w-4 h-4 text-[#25D366] shrink-0" aria-hidden="true" />
-                <span>1 Year of Clinical Experience</span>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5 pt-4 border-t border-[#2F5245]">
+            <div className="flex items-center gap-3 text-xs text-[#EFE9DA] bg-[#1E332C] p-4 rounded-2xl border border-[#2F5245]">
+              <CheckCircle2 className="w-5 h-5 text-[#25D366] shrink-0" aria-hidden="true" />
+              <div>
+                <p className="font-bold text-white text-sm">1 Year Experience</p>
+                <p className="text-[#EFE9DA]/70 mt-0.5">Clinical physiotherapy practice</p>
               </div>
-              <div className="flex items-center gap-2.5 text-xs text-[#EFE9DA] bg-[#1E332C] p-3 rounded-xl border border-[#2F5245]">
-                <CheckCircle2 className="w-4 h-4 text-[#25D366] shrink-0" aria-hidden="true" />
-                <span>100% Home Visit Model</span>
+            </div>
+            <div className="flex items-center gap-3 text-xs text-[#EFE9DA] bg-[#1E332C] p-4 rounded-2xl border border-[#2F5245]">
+              <CheckCircle2 className="w-5 h-5 text-[#25D366] shrink-0" aria-hidden="true" />
+              <div>
+                <p className="font-bold text-white text-sm">100% Home Visits</p>
+                <p className="text-[#EFE9DA]/70 mt-0.5">No physical clinic to visit</p>
               </div>
-              <div className="flex items-center gap-2.5 text-xs text-[#EFE9DA] bg-[#1E332C] p-3 rounded-xl border border-[#2F5245]">
-                <CheckCircle2 className="w-4 h-4 text-[#25D366] shrink-0" aria-hidden="true" />
-                <span>Hegganahalli Cross (~5–10 km)</span>
+            </div>
+            <div className="flex items-center gap-3 text-xs text-[#EFE9DA] bg-[#1E332C] p-4 rounded-2xl border border-[#2F5245]">
+              <CheckCircle2 className="w-5 h-5 text-[#25D366] shrink-0" aria-hidden="true" />
+              <div>
+                <p className="font-bold text-white text-sm">Hegganahalli Cross</p>
+                <p className="text-[#EFE9DA]/70 mt-0.5">~5–10 km coverage radius</p>
               </div>
-              <div className="flex items-center gap-2.5 text-xs text-[#EFE9DA] bg-[#1E332C] p-3 rounded-xl border border-[#2F5245]">
-                <CheckCircle2 className="w-4 h-4 text-[#25D366] shrink-0" aria-hidden="true" />
-                <span>Dedicated 1-on-1 Sessions</span>
+            </div>
+            <div className="flex items-center gap-3 text-xs text-[#EFE9DA] bg-[#1E332C] p-4 rounded-2xl border border-[#2F5245]">
+              <CheckCircle2 className="w-5 h-5 text-[#25D366] shrink-0" aria-hidden="true" />
+              <div>
+                <p className="font-bold text-white text-sm">1-on-1 Sessions</p>
+                <p className="text-[#EFE9DA]/70 mt-0.5">Personalized rehabilitation</p>
               </div>
             </div>
           </div>

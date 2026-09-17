@@ -27,7 +27,6 @@ import { ServiceCard } from "@/components/ServiceCard";
 import { ConditionCard } from "@/components/ConditionCard";
 import { FAQAccordion } from "@/components/FAQAccordion";
 import { EnquiryForm } from "@/components/EnquiryForm";
-import { SmartPhoto } from "@/components/SmartPhoto";
 
 export const metadata: Metadata = {
   title: "Home Physiotherapy in Bengaluru | MoveWell Physiocare",
@@ -90,9 +89,9 @@ export default function HomePage() {
         <div className="bg-[#16241F] text-[#F6F2E9] rounded-[28px] p-6 sm:p-10 lg:p-14 border border-[#2F5245] shadow-2xl relative overflow-hidden">
           <div className="absolute inset-0 opacity-5 pointer-events-none bg-[radial-gradient(#FFFFFF_1px,transparent_1px)] [background-size:24px_24px]" />
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center relative z-10">
-            {/* Left Content Column */}
-            <div className="lg:col-span-7 space-y-6">
+          <div className="relative z-10 space-y-8">
+            {/* Main Content Area */}
+            <div className="max-w-3xl space-y-6">
               <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#1E332C] text-[#25D366] font-semibold text-xs uppercase tracking-wider border border-[#2F5245]">
                 <Activity className="w-3.5 h-3.5 shrink-0" aria-hidden="true" />
                 <span>MOVEWELL PHYSIOCARE • HOME VISIT PHYSIOTHERAPY • BENGALURU</span>
@@ -134,44 +133,39 @@ export default function HomePage() {
                   <span>Call {SITE_CONFIG.phoneDisplay}</span>
                 </a>
               </div>
-
-              {/* Factual Stat & Feature Callouts */}
-              <div className="pt-8 border-t border-[#2F5245] grid grid-cols-2 sm:grid-cols-3 gap-4">
-                <div className="bg-[#1E332C] p-4 rounded-2xl border border-[#2F5245]">
-                  <div className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
-                    {SITE_CONFIG.serviceRadius}
-                  </div>
-                  <p className="text-xs text-[#EFE9DA]/80 mt-1 font-medium">Approx. Service Range</p>
-                </div>
-
-                <div className="bg-[#1E332C] p-4 rounded-2xl border border-[#2F5245] flex flex-col justify-between">
-                  <div className="w-8 h-8 rounded-full bg-[#16241F] text-[#25D366] flex items-center justify-center">
-                    <Home className="w-4 h-4" aria-hidden="true" />
-                  </div>
-                  <p className="text-xs text-white font-bold mt-2">Home Visits Only</p>
-                  <p className="text-[11px] text-[#EFE9DA]/70">No physical clinic</p>
-                </div>
-
-                <div className="bg-[#1E332C] p-4 rounded-2xl border border-[#2F5245] flex flex-col justify-between col-span-2 sm:col-span-1">
-                  <div className="w-8 h-8 rounded-full bg-[#16241F] text-[#C9A227] flex items-center justify-center">
-                    <Award className="w-4 h-4" aria-hidden="true" />
-                  </div>
-                  <p className="text-xs text-white font-bold mt-2">Chinmay</p>
-                  <p className="text-[11px] text-[#EFE9DA]/70">{SITE_CONFIG.yearsOfExperience}</p>
-                </div>
-              </div>
             </div>
 
-            {/* Right Photo Column: Representative Session Visual */}
-            <div className="lg:col-span-5">
-              <SmartPhoto
-                src="/images/hero-session.png"
-                label="Physiotherapy Care at Home"
-                sublabel="Representative home physiotherapy session"
-                aspectRatio="portrait"
-                variant="dark"
-                alt="Physiotherapy home visit session"
-              />
+            {/* Factual Stat & Feature Callouts */}
+            <div className="pt-8 border-t border-[#2F5245] grid grid-cols-1 sm:grid-cols-3 gap-4">
+              <div className="bg-[#1E332C] p-5 rounded-2xl border border-[#2F5245] flex flex-col justify-between">
+                <div className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
+                  {SITE_CONFIG.serviceRadius}
+                </div>
+                <div className="mt-2">
+                  <p className="text-xs text-white font-bold">Approx. Service Range</p>
+                  <p className="text-[11px] text-[#EFE9DA]/70 mt-0.5">Centered around Hegganahalli Cross</p>
+                </div>
+              </div>
+
+              <div className="bg-[#1E332C] p-5 rounded-2xl border border-[#2F5245] flex flex-col justify-between">
+                <div className="w-9 h-9 rounded-full bg-[#16241F] text-[#25D366] flex items-center justify-center">
+                  <Home className="w-4 h-4" aria-hidden="true" />
+                </div>
+                <div className="mt-3">
+                  <p className="text-xs text-white font-bold">Home Visits Only</p>
+                  <p className="text-[11px] text-[#EFE9DA]/70 mt-0.5">No physical clinic — care at your residence</p>
+                </div>
+              </div>
+
+              <div className="bg-[#1E332C] p-5 rounded-2xl border border-[#2F5245] flex flex-col justify-between">
+                <div className="w-9 h-9 rounded-full bg-[#16241F] text-[#C9A227] flex items-center justify-center">
+                  <Award className="w-4 h-4" aria-hidden="true" />
+                </div>
+                <div className="mt-3">
+                  <p className="text-xs text-white font-bold">Chinmay</p>
+                  <p className="text-[11px] text-[#EFE9DA]/70 mt-0.5">{SITE_CONFIG.yearsOfExperience}</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -468,22 +462,11 @@ export default function HomePage() {
       </section>
 
       {/* ================================================================ */}
-      {/* 9. ABOUT CHINMAY PREVIEW                                         */}
+      {/* 9. ABOUT MOVEWELL PHYSIOCARE & CHINMAY                           */}
       {/* ================================================================ */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-[#16241F] text-[#F6F2E9] rounded-[28px] p-6 sm:p-10 lg:p-12 border border-[#2F5245] shadow-xl grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-          <div className="lg:col-span-5">
-            <SmartPhoto
-              src="/images/chinmay-portrait.jpg"
-              label="Home Physiotherapy Practice"
-              sublabel="Representative physiotherapy session photo"
-              aspectRatio="portrait"
-              variant="dark"
-              alt="Physiotherapy care at home"
-            />
-          </div>
-
-          <div className="lg:col-span-7 space-y-5">
+        <div className="bg-[#16241F] text-[#F6F2E9] rounded-[28px] p-6 sm:p-10 lg:p-12 border border-[#2F5245] shadow-xl space-y-8">
+          <div className="max-w-3xl space-y-4">
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#1E332C] text-[#C9A227] font-semibold text-xs border border-[#2F5245]">
               <Award className="w-4 h-4 shrink-0" aria-hidden="true" />
               <span>Practitioner: Chinmay ({SITE_CONFIG.yearsOfExperience})</span>
@@ -502,18 +485,63 @@ export default function HomePage() {
             </p>
 
             <p className="text-sm sm:text-base text-[#EFE9DA]/90 leading-relaxed">
-              Without the overhead or commute to a physical clinic, care is delivered directly at your residence around Hegganahalli Cross, Bengaluru.
+              Without the overhead or commute to a physical clinic, care is delivered directly at your residence around Hegganahalli Cross, Bengaluru. This enables practical rehabilitation in your actual everyday environment.
             </p>
+          </div>
 
-            <div className="pt-2">
-              <Link
-                href="/about"
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white text-[#16241F] font-bold text-sm hover:bg-[#EFE9DA] transition-colors"
-              >
-                <span>Read Full Background</span>
-                <ArrowRight className="w-4 h-4" aria-hidden="true" />
-              </Link>
+          {/* Key Practice Highlights */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-2">
+            <div className="bg-[#1E332C] p-4 rounded-2xl border border-[#2F5245] space-y-1.5">
+              <div className="text-xs font-bold text-[#25D366] uppercase tracking-wider">Experience</div>
+              <p className="text-sm font-semibold text-white">1 Year Clinical Practice</p>
+              <p className="text-xs text-[#EFE9DA]/70">Evidence-informed home therapy</p>
             </div>
+
+            <div className="bg-[#1E332C] p-4 rounded-2xl border border-[#2F5245] space-y-1.5">
+              <div className="text-xs font-bold text-[#25D366] uppercase tracking-wider">Service Model</div>
+              <p className="text-sm font-semibold text-white">100% Home Visits</p>
+              <p className="text-xs text-[#EFE9DA]/70">No physical clinic to visit</p>
+            </div>
+
+            <div className="bg-[#1E332C] p-4 rounded-2xl border border-[#2F5245] space-y-1.5">
+              <div className="text-xs font-bold text-[#25D366] uppercase tracking-wider">Coverage Area</div>
+              <p className="text-sm font-semibold text-white">Hegganahalli Cross</p>
+              <p className="text-xs text-[#EFE9DA]/70">~5–10 km service radius</p>
+            </div>
+
+            <div className="bg-[#1E332C] p-4 rounded-2xl border border-[#2F5245] space-y-1.5">
+              <div className="text-xs font-bold text-[#25D366] uppercase tracking-wider">Session Format</div>
+              <p className="text-sm font-semibold text-white">Dedicated 1-on-1 Care</p>
+              <p className="text-xs text-[#EFE9DA]/70">Starting at ₹500 per consultation</p>
+            </div>
+          </div>
+
+          <div className="flex flex-wrap items-center gap-3 pt-2">
+            <Link
+              href="/about"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white text-[#16241F] font-bold text-sm hover:bg-[#EFE9DA] transition-colors"
+            >
+              <span>Read Full Background</span>
+              <ArrowRight className="w-4 h-4" aria-hidden="true" />
+            </Link>
+
+            <a
+              href={SITE_CONFIG.whatsappUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#25D366] text-white font-bold text-sm hover:bg-[#20bd5a] transition-colors"
+            >
+              <MessageCircle className="w-4 h-4 fill-current" aria-hidden="true" />
+              <span>WhatsApp Chinmay</span>
+            </a>
+
+            <a
+              href={SITE_CONFIG.telUrl}
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#1E332C] text-[#EFE9DA] hover:text-white font-semibold text-sm border border-[#2F5245] transition-colors"
+            >
+              <Phone className="w-3.5 h-3.5 text-[#25D366]" aria-hidden="true" />
+              <span>Call {SITE_CONFIG.phoneDisplay}</span>
+            </a>
           </div>
         </div>
       </section>
