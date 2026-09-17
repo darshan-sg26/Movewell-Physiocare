@@ -248,7 +248,7 @@ export default function HomePage() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {SERVICES_DATA.map((service) => (
-            <ServiceCard key={service.slug} service={service} showImage={false} />
+            <ServiceCard key={service.slug} service={service} />
           ))}
         </div>
       </section>
