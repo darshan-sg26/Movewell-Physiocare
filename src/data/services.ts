@@ -7,6 +7,9 @@ export interface ServiceItem {
   fullDescription: string;
   benefits: string[];
   iconName: string;
+  image?: string;
+  imageAlt?: string;
+  objectPosition?: string;
 }
 
 export const SERVICES_DATA: ServiceItem[] = [
@@ -22,6 +25,9 @@ export const SERVICES_DATA: ServiceItem[] = [
       "Delivered directly at your home"
     ],
     iconName: "Hand",
+    image: "/images/services/manual-therapy.png",
+    imageAlt: "Manual therapy physiotherapy session",
+    objectPosition: "top",
   },
   {
     slug: "exercise-therapy",
@@ -35,6 +41,9 @@ export const SERVICES_DATA: ServiceItem[] = [
       "Supervised movement practice"
     ],
     iconName: "Activity",
+    image: "/images/services/exercise-therapy.png",
+    imageAlt: "Exercise therapy physiotherapy session",
+    objectPosition: "top",
   },
   {
     slug: "sports-rehabilitation",
@@ -48,6 +57,9 @@ export const SERVICES_DATA: ServiceItem[] = [
       "Personalised exercise progressions"
     ],
     iconName: "Trophy",
+    image: "/images/services/sports-rehabilitation.png",
+    imageAlt: "Sports rehabilitation exercise session",
+    objectPosition: "top",
   },
   {
     slug: "post-surgery-rehabilitation",
@@ -61,6 +73,9 @@ export const SERVICES_DATA: ServiceItem[] = [
       "Convenient home care avoiding travel"
     ],
     iconName: "HeartPulse",
+    image: "/images/services/post-surgery-rehabilitation.png",
+    imageAlt: "Post-surgery physiotherapy rehabilitation session",
+    objectPosition: "top",
   },
   {
     slug: "neck-back-pain-relief",
@@ -74,6 +89,9 @@ export const SERVICES_DATA: ServiceItem[] = [
       "Home-friendly movement strategies"
     ],
     iconName: "ShieldAlert",
+    image: "/images/services/neck-back-pain.png",
+    imageAlt: "Physiotherapy session for neck and back pain",
+    objectPosition: "top",
   },
   {
     slug: "geriatric-physiotherapy",
@@ -87,6 +105,9 @@ export const SERVICES_DATA: ServiceItem[] = [
       "Patient-centered compassionate sessions"
     ],
     iconName: "UserCheck",
+    image: "/images/services/geriatric-physiotherapy.png",
+    imageAlt: "Geriatric physiotherapy session",
+    objectPosition: "top",
   },
   {
     slug: "massage-therapy",
@@ -100,6 +121,9 @@ export const SERVICES_DATA: ServiceItem[] = [
       "Tailored application for comfort"
     ],
     iconName: "Sparkles",
+    image: "/images/services/massage_therapy.png",
+    imageAlt: "Physiotherapy massage therapy session",
+    objectPosition: "top",
   },
   {
     slug: "electrotherapy",
@@ -113,6 +137,8 @@ export const SERVICES_DATA: ServiceItem[] = [
       "Applied based on individual evaluation"
     ],
     iconName: "Zap",
+    image: "/images/services/electro-therapy.png",
+    imageAlt: "Electrotherapy physiotherapy session",
+    objectPosition: "top",
   },
 ];
-
